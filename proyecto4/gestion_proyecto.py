@@ -4,7 +4,7 @@ import proyecto as pr
 
 class Gestion:
     def __init__(self):
-        self.proyecto = co.Cola()
+        self.proyecto = []
     
     def menu(self):
         x = 1
@@ -42,7 +42,7 @@ class Gestion:
         gerente = input("ingrese el gerente del proyecto: ")
         equipo = input("ingrese el equipo del proyecto: ")
         proyecto = pr.Proyecto(nom, desc, fid, ffd, estado, empresa, gerente, equipo)
-        self.proyecto.agregar(proyecto)
+        self.proyecto.append(proyecto)
         print("proyecto agregado correctamente!")
         print("---------------------------")
     
@@ -59,7 +59,11 @@ class Gestion:
             print("-presione 8 para modificar el equipo")
             xm = int(input("ingrese una opcion: "))
             print("-------------------------------")
-            proyecto = self.proyecto.devolver_objeto(m)
+            for i in self.proyecto:
+                if m == i.nombre:
+                    proyecto = i
+                    break
+            
             if xm == 1:
                 nuevo_nombre = input("ingrese el nuevo nombre del proyecto: ")
                 proyecto.nombre = nuevo_nombre
@@ -100,24 +104,25 @@ class Gestion:
     def consultar_proyecto(self):
         m = input("ingrese el nombre del proyecto a consultar: ")
         print("-------------------------------")
-        if self.proyecto.buscar_nombre(m):
-            proyecto = self.proyecto.devolver_objeto(m)
-            print(f"id: {proyecto.id}")
-            print(f"nombre: {proyecto.nombre}")
-            print(f"descripcion: {proyecto.descripcion}")
-            print(f"fecha de inicio: {proyecto.fecha_inicio}")
-            print(f"fecha de vencimiento: {proyecto.fecha_fin}")
-            print(f"estado: {proyecto.estado}")
-            print(f"empresa: {proyecto.empresa}")
-            print(f"gerente: {proyecto.gerente}")
-            print(f"equipo: {proyecto.equipo}")
+        for proyecto in self.proyecto:
+            if m==proyecto.nombre:
+                print(f"id: {proyecto.id}")
+                print(f"nombre: {proyecto.nombre}")
+                print(f"descripcion: {proyecto.descripcion}")
+                print(f"fecha de inicio: {proyecto.fecha_inicio}")
+                print(f"fecha de vencimiento: {proyecto.fecha_fin}")
+                print(f"estado: {proyecto.estado}")
+                print(f"empresa: {proyecto.empresa}")
+                print(f"gerente: {proyecto.gerente}")
+                print(f"equipo: {proyecto.equipo}")
         print("------------------------------")
-    
+
     def eliminar_proyecto(self):
         m = input("ingrese el nombre del proyecto a eliminar: ")
-        if self.proyecto.buscar_nombre(m):
-            self.proyecto.eliminar(m)
-            print("proyecto eliminado correctamente!")
+        for i in self.proyecto:
+            if m == i.nombre:
+                self.proyecto.pop(i)
     
     def listar_proyectos(self):
-        self.proyecto.recorrer()
+        for i in self.proyecto:
+            print(f"-{i.nombre}")
