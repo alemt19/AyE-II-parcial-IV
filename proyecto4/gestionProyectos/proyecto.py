@@ -1,6 +1,6 @@
 from datetime import datetime
 import pila as pi
-
+import cola as co
 class Proyecto: 
     id=0
     def __init__(self, nombre, descripcion, fecha_inicio, fecha_fin, estado, empresa, gerente, equipo):
@@ -14,4 +14,5 @@ class Proyecto:
         self.empresa = empresa
         self.gerente = gerente
         self.equipo = equipo
-        self.tareas = pi.Pila()
+        self.tareas_importantes = pi.Pila()
+        self.tareas_proximas_avencer=co.Cola()
