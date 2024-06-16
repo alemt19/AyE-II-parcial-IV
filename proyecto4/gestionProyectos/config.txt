@@ -1,0 +1,6 @@
+#Definimos las rutas 
+ruta_datos = "c:/Users/juana/Desktop/AyE-II-parcial-IV-main/datos.json"
+ruta_subtareas = "c:/Users/juana/Desktop/AyE-II-parcial-IV-main/subtareas.json"
+
+
+

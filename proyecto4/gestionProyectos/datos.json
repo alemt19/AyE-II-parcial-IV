@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "nombre": "Proyecto 1",
+        "descripcion": "Descripción del Proyecto 1",
+        "fecha_inicio": "2022-10-01",
+        "fecha_vencimiento": "2022-11-01",
+        "estado": "En Progreso",
+        "empresa": "Empresa Laiton",
+        "gerente": "Gerente Carmen",
+        "equipo": ["Miembro 1A", "Miembro 2A", "Miembro 3A"]
+    },
+    {
+        "id": 2,
+        "nombre": "Proyecto 2",
+        "descripcion": "Descripción del Proyecto 2",
+        "fecha_inicio": "2022-10-05",
+        "fecha_vencimiento": "2022-11-05",
+        "estado": "En Espera",
+        "empresa": "Empresa Ebenezer",
+        "gerente": "Gerente Jose",
+        "equipo": ["Miembro 1B", "Miembro 2B", "Miembro 3B"]
+    },
+    {
+        "id": 3,
+        "nombre": "Proyecto 3",
+        "descripcion": "Descripción del Proyecto 3",
+        "fecha_inicio": "2022-09-20",
+        "fecha_vencimiento": "2022-10-20",
+        "estado": "Completado",
+        "empresa": "Empresa Cumbre Fresca",
+        "gerente": "Gerente Cecilia",
+        "equipo": ["Miembro 1C", "Miembro 2C", "Miembro 3C"]
+    },
+    {
+        "id": 4,
+        "nombre": "Proyecto 4",
+        "descripcion": "Descripción del Proyecto 4",
+        "fecha_inicio": "2022-08-15",
+        "fecha_vencimiento": "2022-09-15",
+        "estado": "En Progreso",
+        "empresa": "Empresa Gios",
+        "gerente": "Gerente Juan",
+        "equipo": ["Miembro 1D", "Miembro 2D", "Miembro 3D"]
+    },
+    {
+        "id": 5,
+        "nombre": "Proyecto 5",
+        "descripcion": "Descripción del Proyecto 5",
+        "fecha_inicio": "2022-07-10",
+        "fecha_vencimiento": "2022-08-10",
+        "estado": "En Espera",
+        "empresa": "Empresa Plumrose",
+        "gerente": "Gerente Magaly",
+        "equipo": ["Miembro 1E", "Miembro 2E", "Miembro 3E"]
+    },
+    {
+        "id": 6,
+        "nombre": "Proyecto 6",
+        "descripcion": "Descripción del Proyecto 6",
+        "fecha_inicio": "2022-06-25",
+        "fecha_vencimiento": "2022-07-25",
+        "estado": "En Progreso",
+        "empresa": "Empresa Lider Pollo",
+        "gerente": "Gerente Andres",
+        "equipo": ["Miembro 1F", "Miembro 2F", "Miembro 3F"]
+    },
+    {
+        "id": 7,
+        "nombre": "Proyecto 7",
+        "descripcion": "Descripción del Proyecto 7",
+        "fecha_inicio": "2022-05-30",
+        "fecha_vencimiento": "2022-06-30",
+        "estado": "En Progreso",
+        "empresa": "Empresa Ruica",
+        "gerente": "Gerente Ysangela",
+        "equipo": ["Miembro 1G", "Miembro 2G", "Miembro 3G"]
+    },
+    {
+        "id": 8,
+        "nombre": "Proyecto 8",
+        "descripcion": "Descripción del Proyecto 8",
+        "fecha_inicio": "2022-04-20",
+        "fecha_vencimiento": "2022-05-20",
+        "estado": "En Espera",
+        "empresa": "Empresa Puro Lomo",
+        "gerente": "Gerente Maria",
+        "equipo": ["Miembro 1H", "Miembro 2H", "Miembro 3H"]
+    },
+    {
+        "id": 9,
+        "nombre": "Proyecto 9",
+        "descripcion": "Descripción del Proyecto 9",
+        "fecha_inicio": "2022-03-15",
+        "fecha_vencimiento": "2022-04-15",
+        "estado": "Completado",
+        "empresa": "Empresa Ricci",
+        "gerente": "Gerente Carlos",
+        "equipo": ["Miembro 1I", "Miembro 2I", "Miembro 3I"]
+    },
+    {
+        "id": 10,
+        "nombre": "Proyecto 10",
+        "descripcion": "Descripción del Proyecto 10",
+        "fecha_inicio": "2022-02-10",
+        "fecha_vencimiento": "2022-03-10",
+        "estado": "En Progreso",
+        "empresa": "Empresa magros",
+        "gerente": "Gerente luis",
+        "equipo": ["Miembro 1J", "Miembro 2J", "Miembro 3J"]
+    }
+]
