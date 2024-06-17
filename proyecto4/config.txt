@@ -1,5 +1,5 @@
 {
-    "datos": "C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/datos.json",
+    "datos": "C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/datos.json"
 }
 
 
