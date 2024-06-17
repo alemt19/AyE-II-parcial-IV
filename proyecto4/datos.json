@@ -2,288 +2,485 @@
     {
         "id": 1,
         "nombre": "Proyecto 1",
-        "descripcion": "Descripción del Proyecto 1",
-        "fecha_inicio": "2022-10-01",
-        "fecha_vencimiento": "2022-11-01",
-        "estado": "En Progreso",
-        "empresa": "Empresa Laiton",
-        "gerente": "Gerente Carmen",
-        "equipo": [
-            "Miembro 1A",
-            "Miembro 2A",
-            "Miembro 3A"
-        ],
+        "descripcion": "Descripción del proyecto 1",
+        "fecha_inicio": "2024-06-01",
+        "fecha_vencimiento": "2024-06-30",
+        "estado": "En progreso",
+        "empresa": "Empresa A",
+        "gerente": "Gerente A",
+        "equipo": ["Equipo A"],
         "tareas": [
-            {
-                "id": 101,
-                "nombre": "Tarea 1.1",
-                "descripcion": "Descripción de la Tarea 1.1",
-                "estado": "En Progreso",
-                "subtareas": [
-                    {
-                        "id": 1001,
-                        "nombre": "Subtarea 1.1.1",
-                        "descripcion": "Descripción de la Subtarea 1.1.1",
-                        "estado": "Completado"
-                    },
-                    {
-                        "id": 1002,
-                        "nombre": "Subtarea 1.1.2",
-                        "descripcion": "Descripción de la Subtarea 1.1.2",
-                        "estado": "En Progreso"
-                    }
-                ]
-            },
-            {
-                "id": 102,
-                "nombre": "Tarea 1.2",
-                "descripcion": "Descripción de la Tarea 1.2",
-                "estado": "En Espera",
-                "subtareas": [
-                    {
-                        "id": 1003,
-                        "nombre": "Subtarea 1.2.1",
-                        "descripcion": "Descripción de la Subtarea 1.2.1",
-                        "estado": "En Progreso"
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa A",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-06-01",
+            "fecha_vencimiento": "2024-06-30",
+            "estado": "En progreso",
+            "porcentaje": 50,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Completada"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "nombre": "Tarea 2",
+            "empresa_cliente": "Empresa A",
+            "descripcion": "Descripción de la tarea 2",
+            "fecha_inicio": "2024-06-02",
+            "fecha_vencimiento": "2024-06-10",
+            "estado": "En progreso",
+            "porcentaje": 30,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 3,
+                "nombre": "Subtarea 3",
+                "descripcion": "Descripción de la subtarea 3",
+                "estado": "Completada"
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "nombre": "Tarea 3",
+            "empresa_cliente": "Empresa A",
+            "descripcion": "Descripción de la tarea 3",
+            "fecha_inicio": "2024-06-05",
+            "fecha_vencimiento": "2024-06-20",
+            "estado": "En progreso",
+            "porcentaje": 20,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "nombre": "Tarea 4",
+            "empresa_cliente": "Empresa A",
+            "descripcion": "Descripción de la tarea 4",
+            "fecha_inicio": "2024-06-10",
+            "fecha_vencimiento": "2024-06-25",
+            "estado": "En progreso",
+            "porcentaje": 10,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 3,
+                "nombre": "Subtarea 3",
+                "descripcion": "Descripción de la subtarea 3",
+                "estado": "Pendiente"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "nombre": "Tarea 5",
+            "empresa_cliente": "Empresa A",
+            "descripcion": "Descripción de la tarea 5",
+            "fecha_inicio": "2024-06-15",
+            "fecha_vencimiento": "2024-06-30",
+            "estado": "En progreso",
+            "porcentaje": 5,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 3,
+                "nombre": "Subtarea 3",
+                "descripcion": "Descripción de la subtarea 3",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 4,
+                "nombre": "Subtarea 4",
+                "descripcion": "Descripción de la subtarea 4",
+                "estado": "Pendiente"
+              }
+            ]
+          }
         ]
-    },
-    {
+      },
+      {
         "id": 2,
         "nombre": "Proyecto 2",
-        "descripcion": "Descripción del Proyecto 2",
-        "fecha_inicio": "2022-10-05",
-        "fecha_vencimiento": "2022-11-05",
-        "estado": "En Espera",
-        "empresa": "Empresa Ebenezer",
-        "gerente": "Gerente Jose",
-        "equipo": [
-            "Miembro 1B",
-            "Miembro 2B",
-            "Miembro 3B"
-        ],
+        "descripcion": "Descripción del proyecto 2",
+        "fecha_inicio": "2024-07-01",
+        "fecha_vencimiento": "2024-07-31",
+        "estado": "En progreso",
+        "empresa": "Empresa B",
+        "gerente": "Gerente B",
+        "equipo": ["Equipo B"],
         "tareas": [
-            {
-                "id": 103,
-                "nombre": "Tarea 2.1",
-                "descripcion": "Descripción de la Tarea 2.1",
-                "estado": "Completado",
-                "subtareas": [
-                    {
-                        "id": 1004,
-                        "nombre": "Subtarea 2.1.1",
-                        "descripcion": "Descripción de la Subtarea 2.1.1",
-                        "estado": "Completado"
-                    },
-                    {
-                        "id": 1005,
-                        "nombre": "Subtarea 2.1.2",
-                        "descripcion": "Descripción de la Subtarea 2.1.2",
-                        "estado": "Completado"
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa B",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-07-01",
+            "fecha_vencimiento": "2024-07-31",
+            "estado": "En progreso",
+            "porcentaje": 75,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
         ]
-    },
-    {
+      },
+      {
         "id": 3,
         "nombre": "Proyecto 3",
-        "descripcion": "Descripción del Proyecto 3",
-        "fecha_inicio": "2022-09-20",
-        "fecha_vencimiento": "2022-10-20",
-        "estado": "Completado",
-        "empresa": "Empresa Cumbre Fresca",
-        "gerente": "Gerente Cecilia",
-        "equipo": [
-            "Miembro 1C",
-            "Miembro 2C",
-            "Miembro 3C"
-        ],
-        "tareas": []
-    },
-    {
+        "descripcion": "Descripción del proyecto 3",
+        "fecha_inicio": "2024-08-01",
+        "fecha_vencimiento": "2024-08-31",
+        "estado": "En progreso",
+        "empresa": "Empresa C",
+        "gerente": "Gerente C",
+        "equipo": ["Equipo C"],
+        "tareas": [
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa C",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-08-01",
+            "fecha_vencimiento": "2024-08-31",
+            "estado": "En progreso",
+            "porcentaje": 80,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 4,
         "nombre": "Proyecto 4",
-        "descripcion": "Descripción del Proyecto 4",
-        "fecha_inicio": "2022-08-15",
-        "fecha_vencimiento": "2022-09-15",
-        "estado": "En Progreso",
-        "empresa": "Empresa Gios",
-        "gerente": "Gerente Juan",
-        "equipo": [
-            "Miembro 1D",
-            "Miembro 2D",
-            "Miembro 3D"
-        ],
+        "descripcion": "Descripción del proyecto 4",
+        "fecha_inicio": "2024-09-01",
+        "fecha_vencimiento": "2024-09-30",
+        "estado": "En progreso",
+        "empresa": "Empresa D",
+        "gerente": "Gerente D",
+        "equipo": ["Equipo D"],
         "tareas": [
-            {
-                "id": 104,
-                "nombre": "Tarea 4.1",
-                "descripcion": "Descripción de la Tarea 4.1",
-                "estado": "En Progreso",
-                "subtareas": [
-                    {
-                        "id": 1006,
-                        "nombre": "Subtarea 4.1.1",
-                        "descripcion": "Descripción de la Subtarea 4.1.1",
-                        "estado": "En Progreso"
-                    },
-                    {
-                        "id": 1007,
-                        "nombre": "Subtarea 4.1.2",
-                        "descripcion": "Descripción de la Subtarea 4.1.2",
-                        "estado": "En Espera"
-                    }
-                ]
-            },
-            {
-                "id": 105,
-                "nombre": "Tarea 4.2",
-                "descripcion": "Descripción de la Tarea 4.2",
-                "estado": "Completado",
-                "subtareas": [
-                    {
-                        "id": 1008,
-                        "nombre": "Subtarea 4.2.1",
-                        "descripcion": "Descripción de la Subtarea 4.2.1",
-                        "estado": "Completado"
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa D",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-09-01",
+            "fecha_vencimiento": "2024-09-30",
+            "estado": "En progreso",
+            "porcentaje": 90,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
         ]
-    },
-    {
+      },
+      {
         "id": 5,
         "nombre": "Proyecto 5",
-        "descripcion": "Descripción del Proyecto 5",
-        "fecha_inicio": "2022-07-10",
-        "fecha_vencimiento": "2022-08-10",
-        "estado": "En Espera",
-        "empresa": "Empresa Plumrose",
-        "gerente": "Gerente Magaly",
-        "equipo": [
-            "Miembro 1E",
-            "Miembro 2E",
-            "Miembro 3E"
-        ],
-        "tareas": []
-    },
-    {
+        "descripcion": "Descripción del proyecto 5",
+        "fecha_inicio": "2024-10-01",
+        "fecha_vencimiento": "2024-10-31",
+        "estado": "En progreso",
+        "empresa": "Empresa E",
+        "gerente": "Gerente E",
+        "equipo": ["Equipo E"],
+        "tareas": [
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa E",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-10-01",
+            "fecha_vencimiento": "2024-10-31",
+            "estado": "En progreso",
+            "porcentaje": 90,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 6,
         "nombre": "Proyecto 6",
-        "descripcion": "Descripción del Proyecto 6",
-        "fecha_inicio": "2022-06-25",
-        "fecha_vencimiento": "2022-07-25",
-        "estado": "En Progreso",
-        "empresa": "Empresa Lider Pollo",
-        "gerente": "Gerente Andres",
-        "equipo": [
-            "Miembro 1F",
-            "Miembro 2F",
-            "Miembro 3F"
-        ],
+        "descripcion": "Descripción del proyecto 6",
+        "fecha_inicio": "2024-11-01",
+        "fecha_vencimiento": "2024-11-30",
+        "estado": "En progreso",
+        "empresa": "Empresa F",
+        "gerente": "Gerente F",
+        "equipo": ["Equipo F"],
         "tareas": [
-            {
-                "id": 106,
-                "nombre": "Tarea 6.1",
-                "descripcion": "Descripción de la Tarea 6.1",
-                "estado": "En Progreso",
-                "subtareas": [
-                    {
-                        "id": 1009,
-                        "nombre": "Subtarea 6.1.1",
-                        "descripcion": "Descripción de la Subtarea 6.1.1",
-                        "estado": "En Progreso"
-                    },
-                    {
-                        "id": 1010,
-                        "nombre": "Subtarea 6.1.2",
-                        "descripcion": "Descripción de la Subtarea 6.1.2",
-                        "estado": "En Espera"
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa F",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-11-01",
+            "fecha_vencimiento": "2024-11-30",
+            "estado": "En progreso",
+            "porcentaje": 85,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
         ]
-    },
-    {
+      },
+      {
         "id": 7,
         "nombre": "Proyecto 7",
-        "descripcion": "Descripción del Proyecto 7",
-        "fecha_inicio": "2022-05-30",
-        "fecha_vencimiento": "2022-06-30",
-        "estado": "En Progreso",
-        "empresa": "Empresa Ruica",
-        "gerente": "Gerente Ysangela",
-        "equipo": [
-            "Miembro 1G",
-            "Miembro 2G",
-            "Miembro 3G"
-        ],
-        "tareas": []
-    },
-    {
+        "descripcion": "Descripción del proyecto 7",
+        "fecha_inicio": "2024-12-01",
+        "fecha_vencimiento": "2024-12-31",
+        "estado": "En progreso",
+        "empresa": "Empresa G",
+        "gerente": "Gerente G",
+        "equipo": ["Equipo G"],
+        "tareas": [
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa G",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-12-01",
+            "fecha_vencimiento": "2024-12-31",
+            "estado": "En progreso",
+            "porcentaje": 95,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 8,
         "nombre": "Proyecto 8",
-        "descripcion": "Descripción del Proyecto 8",
-        "fecha_inicio": "2022-04-20",
-        "fecha_vencimiento": "2022-05-20",
-        "estado": "En Espera",
-        "empresa": "Empresa Puro Lomo",
-        "gerente": "Gerente Maria",
-        "equipo": [
-            "Miembro 1H",
-            "Miembro 2H",
-            "Miembro 3H"
-        ],
-        "tareas": []
-    },
-    {
+        "descripcion": "Descripción del proyecto 8",
+        "fecha_inicio": "2025-01-01",
+        "fecha_vencimiento": "2025-01-31",
+        "estado": "En progreso",
+        "empresa": "Empresa H",
+        "gerente": "Gerente H",
+        "equipo": ["Equipo H"],
+        "tareas": [
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa H",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2025-01-01",
+            "fecha_vencimiento": "2025-01-31",
+            "estado": "En progreso",
+            "porcentaje": 100,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 9,
         "nombre": "Proyecto 9",
-        "descripcion": "Descripción del Proyecto 9",
-        "fecha_inicio": "2022-03-15",
-        "fecha_vencimiento": "2022-04-15",
-        "estado": "Completado",
-        "empresa": "Empresa Ricci",
-        "gerente": "Gerente Carlos",
-        "equipo": [
-            "Miembro 1I",
-            "Miembro 2I",
-            "Miembro 3I"
-        ],
-        "tareas": []
-    },
-    {
+        "descripcion": "Descripción del proyecto 9",
+        "fecha_inicio": "2025-02-01",
+        "fecha_vencimiento": "2025-02-28",
+        "estado": "En progreso",
+        "empresa": "Empresa I",
+        "gerente": "Gerente I",
+        "equipo": ["Equipo I"],
+        "tareas": [
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa I",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2025-02-01",
+            "fecha_vencimiento": "2025-02-28",
+            "estado": "En progreso",
+            "porcentaje": 100,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 10,
         "nombre": "Proyecto 10",
-        "descripcion": "Descripción del Proyecto 10",
-        "fecha_inicio": "2022-02-10",
-        "fecha_vencimiento": "2022-03-10",
-        "estado": "En Progreso",
-        "empresa": "Empresa magros",
-        "gerente": "Gerente luis",
-        "equipo": [
-            "Miembro 1J",
-            "Miembro 2J",
-            "Miembro 3J"
-        ],
+        "descripcion": "Descripción del proyecto 10",
+        "fecha_inicio": "2025-03-01",
+        "fecha_vencimiento": "2024-12-31",
+        "estado": "En progreso",
+        "empresa": "Empresa B",
+        "gerente": "Gerente B",
+        "equipo": ["Equipo B"],
         "tareas": [
-            {
-                "id": 107,
-                "nombre": "Tarea 10.1",
-                "descripcion": "Descripción de la Tarea 10.1",
-                "estado": "En Progreso",
-                "subtareas": [
-                    {
-                        "id": 1011,
-                        "nombre": "Subtarea 10.1.1",
-                        "descripcion": "Descripción de la Subtarea 10.1.1",
-                        "estado": "En Progreso"
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "nombre": "Tarea 1",
+            "empresa_cliente": "Empresa B",
+            "descripcion": "Descripción de la tarea 1",
+            "fecha_inicio": "2024-07-01",
+            "fecha_vencimiento": "2024-07-31",
+            "estado": "En progreso",
+            "porcentaje": 75,
+            "subtareas": [
+              {
+                "id": 1,
+                "nombre": "Subtarea 1",
+                "descripcion": "Descripción de la subtarea 1",
+                "estado": "Pendiente"
+              },
+              {
+                "id": 2,
+                "nombre": "Subtarea 2",
+                "descripcion": "Descripción de la subtarea 2",
+                "estado": "Pendiente"
+              }
+            ]
+          }
         ]
-    }
+      }
 ]
