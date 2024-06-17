@@ -182,7 +182,7 @@ class Gestion:
                 print(f"equipo: {proyecto.equipo}")
                 print("tareas:")
                 for i in proyecto.tareas:
-                    print(f"- {i}")
+                    print(f"- {i.nombre}")
                 band =1
                 break
             else: 
