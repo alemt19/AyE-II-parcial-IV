@@ -3,6 +3,7 @@ import cola as co
 import proyecto as pr
 from tareas import Tareas
 import gestion_tareas
+import reportes
 
 class Gestion:
     def __init__(self):
@@ -13,6 +14,7 @@ class Gestion:
         while x != 0:
             print("1. Gestionar Proyectos")
             print("2. Gestionar Tareas y Prioridades")
+            print("3. Reportes")
             print("-presione 0 para salir del programa")
             x = int(input("ingrese una opcion: "))
 
@@ -36,8 +38,8 @@ class Gestion:
                 elif x == 5:
                     self.listar_proyectos()
             elif x == 2:
-                id = int(input("Ingrese el id del proyecto del que se desea gestionar las tareas: "))
-                proyecto = gestion_tareas.elegir_proyecto(self.proyectos, id)
+                nombre = input("Ingrese el nombre del proyecto del que se desea gestionar las tareas: ")
+                proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
                 print("------------------------")
                 print("-presione 1 para agregar una nueva tarea")
                 print("-presione 2 para insertar una nueva tarea en una posición dada")
@@ -90,6 +92,31 @@ class Gestion:
                         gestion_tareas.eliminar_tarea_venc(proyecto)
                     elif x == 3:
                         gestion_tareas.consultar_tarea_venc(proyecto)
+            elif x == 3:
+                print("------------------------")
+                print("-presione 1 consultar tareas por estado")
+                print("-presione 2 para filtrar tareas por fecha")
+                print("-presione 3 para filtrar proyectos")
+                print("-presione 4 para listar subtareas de un proyecto")
+                print("-presione 0 para salir del programa")
+                x = int(input("ingrese una opcion: "))
+                print("------------------------")
+
+                if x == 1:
+                    nombre = input("Ingrese el nombre del proyecto del que se desea filtrar las tareas: ")
+                    proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
+                    estado = input("Ingrese el estado de las tareas que se desean filtrar: ")
+                    reportes.consultar_tareas_estado(proyecto)
+                elif x == 2:
+                    nombre = input("Ingrese el nombre del proyecto del que se desea gestionar las tareas: ")
+                    proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
+                    reportes.filtrado_por_fecha(proyecto)
+                elif x == 3:
+                    reportes.consultar_proyectos(self.proyectos)
+                elif x == 4:
+                    nombre = input("Ingrese el nombre del proyecto del que se desea listar las tareas: ")
+                    proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
+                    reportes.listar_subtareas(proyecto)
 
 
         print("fin del programa")
