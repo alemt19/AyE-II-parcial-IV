@@ -14,5 +14,6 @@ class Proyecto:
         self.empresa = empresa
         self.gerente = gerente
         self.equipo = equipo
+        self.tareas=[]
         self.tareas_prioritarias = pi.Pila()
         self.tareas_proximas_avencer=co.Cola()

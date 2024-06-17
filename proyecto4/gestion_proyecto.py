@@ -167,9 +167,10 @@ class Gestion:
     
     def consultar_proyecto(self):
         m = input("ingrese el nombre del proyecto a consultar: ")
+        band=0
         print("-------------------------------")
         for proyecto in self.proyectos:
-            if m==proyecto.nombre:
+            if m.lower()==proyecto.nombre.lower():
                 print(f"id: {proyecto.id}")
                 print(f"nombre: {proyecto.nombre}")
                 print(f"descripcion: {proyecto.descripcion}")
@@ -179,6 +180,16 @@ class Gestion:
                 print(f"empresa: {proyecto.empresa}")
                 print(f"gerente: {proyecto.gerente}")
                 print(f"equipo: {proyecto.equipo}")
+                print("tareas:")
+                for i in proyecto.tareas:
+                    print(f"- {i}")
+                band =1
+                break
+            else: 
+                band=0
+                
+        if band ==0:
+            print("proyecto no encontrado")
         print("------------------------------")
 
     def eliminar_proyecto(self):

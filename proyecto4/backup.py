@@ -1,21 +1,23 @@
 import json
 from datetime import datetime
+import tareas as tr
+from proyecto import Proyecto as pr
+import os
 
-
-def cargar_datos_desde_json(nombre_archivo):
+def cargar_datos_desde_json():
     proyectos = []
-    
-    # Cargar rutas desde el archivo de configuración
-    with open("config.txt", "r") as config_file:
+    config_path = os.path.join("proyecto4", "config.txt")
+    # Leer y cargar el archivo de configuración
+    with open(config_path, "r") as config_file:
         config = json.load(config_file)
-        ruta_proyectos = config["datos"]
-        ruta_subtareas = config["subtareas"]
+    ruta_proyectos = config["datos"]
+    ruta_subtareas = config["subtareas"]
     
     # Cargar datos de proyectos
     with open(ruta_proyectos, "r") as archivo:
         datos = json.load(archivo)
         for proyecto_data in datos:
-            proyecto = proyecto(
+            proyecto = pr(
                 proyecto_data["nombre"],
                 proyecto_data["descripcion"],
                 datetime.strptime(proyecto_data["fecha_inicio"], "%Y-%m-%d"),
@@ -36,14 +38,14 @@ def cargar_datos_desde_json(nombre_archivo):
         for proyecto in proyectos:
             proyecto_id = proyecto.id
             for tarea in subtareas_datos.get(str(proyecto_id), []):
-                tarea_obj = tarea(
+                tarea_obj = tr.Tareas(
                     tarea["id"],
                     tarea["nombre"],
                     "",  # Cliente (si es necesario añadirlo)
                     tarea["descripcion"],
-                    datetime.strptime(tarea["fecha_inicio"], "%Y-%m-%d"),
+                    datetime.strptime("1999-12-12", "%Y-%m-%d"),
                     datetime.strptime(tarea["fecha_vencimiento"], "%Y-%m-%d"),
-                    tarea["estado"],
+                    "completado",
                     0  # Avance (si es necesario añadirlo)
                 )
                 
@@ -54,7 +56,7 @@ def cargar_datos_desde_json(nombre_archivo):
                     )
                     tarea_obj.agregar_subtarea(subtarea_obj)
                 
-                proyecto.agregar_tarea(tarea_obj)
+                proyecto.tareas.append(tarea_obj)
     
     # Respaldar datos de proyectos a un archivo
     with open(ruta_proyectos, "w") as respaldo_proyectos:

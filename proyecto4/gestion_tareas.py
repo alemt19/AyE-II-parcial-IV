@@ -1,7 +1,7 @@
 from datetime import datetime
 from tareas import Tareas
 
-def agregar_tarea(proyectos, proyecto):
+def agregar_tarea( proyecto):
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
     cliente = input("Ingrese el nombre del cliente: ")
@@ -13,7 +13,7 @@ def agregar_tarea(proyectos, proyecto):
     tarea = Tareas(nombre, empresa, cliente, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado, porcentaje)
     proyecto.tareas.append(tarea)
 
-def insertar_tarea(proyectos, proyecto, i):
+def insertar_tarea( proyecto, i):
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
     cliente = input("Ingrese el nombre del cliente: ")
@@ -25,7 +25,7 @@ def insertar_tarea(proyectos, proyecto, i):
     tarea = Tareas(nombre, empresa, cliente, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado, porcentaje)
     proyecto.tareas.insert(i, tarea)
 
-def modificar_tarea(proyectos, proyecto, id):
+def modificar_tarea(proyecto, id):
     tarea = proyecto.tareas[id]
     print("-presione 1 para modificar el nombre")
     print("-presione 2 para modificar la empresa")
@@ -73,7 +73,7 @@ def modificar_tarea(proyectos, proyecto, id):
     else:
         print("error, opcion no valida")
         
-def buscar_tarea(proyectos, proyecto):
+def buscar_tarea (proyecto):
     print("Presione 1 para buscar tareas por nombre")
     print("Presione 2 para buscar tareas por empresa")
     print("Presione 3 para buscar tareas por cliente")
@@ -103,7 +103,7 @@ def buscar_tarea(proyectos, proyecto):
         for i in tareas:
             print(f"{i.nombre}")
         
-def eliminar_tarea(proyectos, proyecto):
+def eliminar_tarea( proyecto):
     nombre = input("Ingrese el nombre de la tarea que se desea eliminar: ")
     n = 0
     for i in proyecto.tareas:
@@ -117,7 +117,7 @@ def eliminar_tarea(proyectos, proyecto):
     else:
         print("No se ha encontrado una tarea con el nombre dado")
 
-def agregar_priotitaria(proyectos, proyecto):
+def agregar_priotitaria(proyecto):
     nombre = input("Ingrese el nombre de la tarea que se desea agregar: ")
     n = 0
     for i in proyecto.tareas:
@@ -131,7 +131,7 @@ def agregar_priotitaria(proyectos, proyecto):
     else:
         print("No se ha encontrado una tarea con el nombre dado")
     
-def eliminar_prioritaria(proyectos, proyecto):
+def eliminar_prioritaria(proyecto):
         
     if proyecto.tareas_prioritarias.ver_tope():
         proyecto.tareas_prioritarias.eliminar()
@@ -140,7 +140,7 @@ def eliminar_prioritaria(proyectos, proyecto):
         print("No hay ninguna tarea marcada como prioritaria")
         
     
-def consultar_prioritaria(proyectos, proyecto):
+def consultar_prioritaria(proyecto):
     if proyecto.tareas_prioritarias.ver_tope():
         tarea = proyecto.tareas_prioritarias.ver_tope()
         print(f"{tarea.nombre} {tarea.empresa} {tarea.cliente}")
