@@ -1,6 +1,5 @@
 {
     "datos": "C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/datos.json",
-    "subtareas": "C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/subtareas.json"
 }
 
 
