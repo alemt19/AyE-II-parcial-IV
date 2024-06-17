@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre": "Proyecto 1",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 1",
+        "descripcion": "Descripción del Proyecto 1",
         "fecha_inicio": "2022-10-01",
         "fecha_vencimiento": "2022-11-01",
         "estado": "En Progreso",
@@ -12,12 +12,48 @@
             "Miembro 1A",
             "Miembro 2A",
             "Miembro 3A"
+        ],
+        "tareas": [
+            {
+                "id": 101,
+                "nombre": "Tarea 1.1",
+                "descripcion": "Descripción de la Tarea 1.1",
+                "estado": "En Progreso",
+                "subtareas": [
+                    {
+                        "id": 1001,
+                        "nombre": "Subtarea 1.1.1",
+                        "descripcion": "Descripción de la Subtarea 1.1.1",
+                        "estado": "Completado"
+                    },
+                    {
+                        "id": 1002,
+                        "nombre": "Subtarea 1.1.2",
+                        "descripcion": "Descripción de la Subtarea 1.1.2",
+                        "estado": "En Progreso"
+                    }
+                ]
+            },
+            {
+                "id": 102,
+                "nombre": "Tarea 1.2",
+                "descripcion": "Descripción de la Tarea 1.2",
+                "estado": "En Espera",
+                "subtareas": [
+                    {
+                        "id": 1003,
+                        "nombre": "Subtarea 1.2.1",
+                        "descripcion": "Descripción de la Subtarea 1.2.1",
+                        "estado": "En Progreso"
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 2,
         "nombre": "Proyecto 2",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 2",
+        "descripcion": "Descripción del Proyecto 2",
         "fecha_inicio": "2022-10-05",
         "fecha_vencimiento": "2022-11-05",
         "estado": "En Espera",
@@ -27,12 +63,34 @@
             "Miembro 1B",
             "Miembro 2B",
             "Miembro 3B"
+        ],
+        "tareas": [
+            {
+                "id": 103,
+                "nombre": "Tarea 2.1",
+                "descripcion": "Descripción de la Tarea 2.1",
+                "estado": "Completado",
+                "subtareas": [
+                    {
+                        "id": 1004,
+                        "nombre": "Subtarea 2.1.1",
+                        "descripcion": "Descripción de la Subtarea 2.1.1",
+                        "estado": "Completado"
+                    },
+                    {
+                        "id": 1005,
+                        "nombre": "Subtarea 2.1.2",
+                        "descripcion": "Descripción de la Subtarea 2.1.2",
+                        "estado": "Completado"
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 3,
         "nombre": "Proyecto 3",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 3",
+        "descripcion": "Descripción del Proyecto 3",
         "fecha_inicio": "2022-09-20",
         "fecha_vencimiento": "2022-10-20",
         "estado": "Completado",
@@ -42,12 +100,13 @@
             "Miembro 1C",
             "Miembro 2C",
             "Miembro 3C"
-        ]
+        ],
+        "tareas": []
     },
     {
         "id": 4,
         "nombre": "Proyecto 4",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 4",
+        "descripcion": "Descripción del Proyecto 4",
         "fecha_inicio": "2022-08-15",
         "fecha_vencimiento": "2022-09-15",
         "estado": "En Progreso",
@@ -57,12 +116,48 @@
             "Miembro 1D",
             "Miembro 2D",
             "Miembro 3D"
+        ],
+        "tareas": [
+            {
+                "id": 104,
+                "nombre": "Tarea 4.1",
+                "descripcion": "Descripción de la Tarea 4.1",
+                "estado": "En Progreso",
+                "subtareas": [
+                    {
+                        "id": 1006,
+                        "nombre": "Subtarea 4.1.1",
+                        "descripcion": "Descripción de la Subtarea 4.1.1",
+                        "estado": "En Progreso"
+                    },
+                    {
+                        "id": 1007,
+                        "nombre": "Subtarea 4.1.2",
+                        "descripcion": "Descripción de la Subtarea 4.1.2",
+                        "estado": "En Espera"
+                    }
+                ]
+            },
+            {
+                "id": 105,
+                "nombre": "Tarea 4.2",
+                "descripcion": "Descripción de la Tarea 4.2",
+                "estado": "Completado",
+                "subtareas": [
+                    {
+                        "id": 1008,
+                        "nombre": "Subtarea 4.2.1",
+                        "descripcion": "Descripción de la Subtarea 4.2.1",
+                        "estado": "Completado"
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 5,
         "nombre": "Proyecto 5",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 5",
+        "descripcion": "Descripción del Proyecto 5",
         "fecha_inicio": "2022-07-10",
         "fecha_vencimiento": "2022-08-10",
         "estado": "En Espera",
@@ -72,12 +167,13 @@
             "Miembro 1E",
             "Miembro 2E",
             "Miembro 3E"
-        ]
+        ],
+        "tareas": []
     },
     {
         "id": 6,
         "nombre": "Proyecto 6",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 6",
+        "descripcion": "Descripción del Proyecto 6",
         "fecha_inicio": "2022-06-25",
         "fecha_vencimiento": "2022-07-25",
         "estado": "En Progreso",
@@ -87,12 +183,34 @@
             "Miembro 1F",
             "Miembro 2F",
             "Miembro 3F"
+        ],
+        "tareas": [
+            {
+                "id": 106,
+                "nombre": "Tarea 6.1",
+                "descripcion": "Descripción de la Tarea 6.1",
+                "estado": "En Progreso",
+                "subtareas": [
+                    {
+                        "id": 1009,
+                        "nombre": "Subtarea 6.1.1",
+                        "descripcion": "Descripción de la Subtarea 6.1.1",
+                        "estado": "En Progreso"
+                    },
+                    {
+                        "id": 1010,
+                        "nombre": "Subtarea 6.1.2",
+                        "descripcion": "Descripción de la Subtarea 6.1.2",
+                        "estado": "En Espera"
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 7,
         "nombre": "Proyecto 7",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 7",
+        "descripcion": "Descripción del Proyecto 7",
         "fecha_inicio": "2022-05-30",
         "fecha_vencimiento": "2022-06-30",
         "estado": "En Progreso",
@@ -102,12 +220,13 @@
             "Miembro 1G",
             "Miembro 2G",
             "Miembro 3G"
-        ]
+        ],
+        "tareas": []
     },
     {
         "id": 8,
         "nombre": "Proyecto 8",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 8",
+        "descripcion": "Descripción del Proyecto 8",
         "fecha_inicio": "2022-04-20",
         "fecha_vencimiento": "2022-05-20",
         "estado": "En Espera",
@@ -117,12 +236,13 @@
             "Miembro 1H",
             "Miembro 2H",
             "Miembro 3H"
-        ]
+        ],
+        "tareas": []
     },
     {
         "id": 9,
         "nombre": "Proyecto 9",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 9",
+        "descripcion": "Descripción del Proyecto 9",
         "fecha_inicio": "2022-03-15",
         "fecha_vencimiento": "2022-04-15",
         "estado": "Completado",
@@ -132,12 +252,13 @@
             "Miembro 1I",
             "Miembro 2I",
             "Miembro 3I"
-        ]
+        ],
+        "tareas": []
     },
     {
         "id": 10,
         "nombre": "Proyecto 10",
-        "descripcion": "Descripci\u00c3\u00b3n del Proyecto 10",
+        "descripcion": "Descripción del Proyecto 10",
         "fecha_inicio": "2022-02-10",
         "fecha_vencimiento": "2022-03-10",
         "estado": "En Progreso",
@@ -147,6 +268,22 @@
             "Miembro 1J",
             "Miembro 2J",
             "Miembro 3J"
+        ],
+        "tareas": [
+            {
+                "id": 107,
+                "nombre": "Tarea 10.1",
+                "descripcion": "Descripción de la Tarea 10.1",
+                "estado": "En Progreso",
+                "subtareas": [
+                    {
+                        "id": 1011,
+                        "nombre": "Subtarea 10.1.1",
+                        "descripcion": "Descripción de la Subtarea 10.1.1",
+                        "estado": "En Progreso"
+                    }
+                ]
+            }
         ]
     }
 ]
