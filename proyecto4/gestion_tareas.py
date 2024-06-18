@@ -26,52 +26,56 @@ def insertar_tarea( proyecto, i):
     proyecto.tareas.insert(i, tarea)
 
 def modificar_tarea(proyecto, id):
-    tarea = proyecto.tareas[id]
-    print("-presione 1 para modificar el nombre")
-    print("-presione 2 para modificar la empresa")
-    print("-presione 3 para modificar el cliente")
-    print("-presione 4 para modificar la descripcion")
-    print("-presione 5 para modificar la fecha de inicio")
-    print("-presione 6 para modificar la fecha de vencimiento")
-    print("-presione 7 para modificar el estado")
-    print("-presione 8 para modificar el porcentaje")
-    xm = int(input("ingrese una opcion: "))
-    print("-------------------------------")
-            
-    if xm == 1:
-        nuevo_nombre = input("ingrese el nuevo nombre de la tarea: ")
-        tarea.nombre = nuevo_nombre
-        print("Tarea modificada exitosamente!")
-    elif xm == 2:
-        nueva_empresa = input("ingrese la nueva empresa de la tarea: ")
-        tarea.empresa = nueva_empresa
-        print("Tarea modificada exitosamente!")
-    elif xm == 3:
-        nueva_empresa = input("ingrese el nuevo cliente de la tarea: ")
-        tarea.empresa = nueva_empresa
-        print("Tarea modificada exitosamente!")
-    elif xm == 4:
-        nueva_desc = input("ingrese la nueva descripcion de la tarea: ")
-        tarea.descripcion = nueva_desc
-        print("Tarea modificada exitosamente!")
-    elif xm == 5:
-        nueva_fi = input("ingrese la nueva fecha de inicio de la tarea en formato YYYY-MM-DD: ")
-        tarea.fecha_inicio = datetime.strptime(nueva_fi, "%Y-%m-%d")
-        print("Tarea modificada exitosamente!")
-    elif xm == 6:
-        nueva_ff = input("ingrese la nueva fecha de vencimiento de la tarea en formato YYYY-MM-DD: ")
-        tarea.fecha_fin = datetime.strptime(nueva_ff, "%Y-%m-%d")
-        print("Tarea modificada exitosamente!")
-    elif xm == 7:
-        nuevo_estado = input("ingrese el nuevo estado de la tarea: ")
-        tarea.estado = nuevo_estado
-        print("Tarea modificada exitosamente!")
-    elif xm == 8:
-        nuevo_porcentaje = int(input("ingrese el nuevo porcentaje de la tarea: "))
-        tarea.equipo = nuevo_porcentaje
-        print("Tarea modificada exitosamente!")
+    if id>=len(proyecto.tareas):
+        print("indice fuera de rango")
     else:
-        print("error, opcion no valida")
+        tarea = proyecto.tareas[id]
+        print("-presione 1 para modificar el nombre")
+        print("-presione 2 para modificar la empresa")
+        print("-presione 3 para modificar el cliente")
+        print("-presione 4 para modificar la descripcion")
+        print("-presione 5 para modificar la fecha de inicio")
+        print("-presione 6 para modificar la fecha de vencimiento")
+        print("-presione 7 para modificar el estado")
+        print("-presione 8 para modificar el porcentaje")
+        xm = int(input("ingrese una opcion: "))
+        print("-------------------------------")
+            
+        if xm == 1:
+            nuevo_nombre = input("ingrese el nuevo nombre de la tarea: ")
+            tarea.nombre = nuevo_nombre
+            print("Tarea modificada exitosamente!")
+        elif xm == 2:
+            nueva_empresa = input("ingrese la nueva empresa de la tarea: ")
+            tarea.empresa = nueva_empresa
+            print("Tarea modificada exitosamente!")
+        elif xm == 3:
+            nuevo_cliente = input("ingrese el nuevo cliente de la tarea: ")
+            tarea.cliente = nuevo_cliente
+            print("Tarea modificada exitosamente!")
+        elif xm == 4:
+            nueva_desc = input("ingrese la nueva descripcion de la tarea: ")
+            tarea.descripcion = nueva_desc
+            print("Tarea modificada exitosamente!")
+        elif xm == 5:
+            nueva_fi = input("ingrese la nueva fecha de inicio de la tarea en formato YYYY-MM-DD: ")
+            tarea.fecha_inicio = datetime.strptime(nueva_fi, "%Y-%m-%d")
+            print("Tarea modificada exitosamente!")
+        elif xm == 6:
+            nueva_ff = input("ingrese la nueva fecha de vencimiento de la tarea en formato YYYY-MM-DD: ")
+            tarea.fecha_fin = datetime.strptime(nueva_ff, "%Y-%m-%d")
+            print("Tarea modificada exitosamente!")
+        elif xm == 7:
+            nuevo_estado = input("ingrese el nuevo estado de la tarea: ")
+            tarea.estado = nuevo_estado
+            print("Tarea modificada exitosamente!")
+        elif xm == 8:
+            nuevo_porcentaje = int(input("ingrese el nuevo porcentaje de la tarea: "))
+            tarea.porcentaje = nuevo_porcentaje
+            print("Tarea modificada exitosamente!")
+        else:
+            print("error, opcion no valida")
+
         
 def buscar_tarea (proyecto):
     print("Presione 1 para buscar tareas por nombre")
@@ -154,7 +158,11 @@ def agregar_tarea_venc(proyecto):
     for i in proyecto.tareas:
         if nombre == i.nombre:
             while proyecto.tareas_proximas_avencer:
-                if i.fecha_fin < proyecto.tareas_proximas_avencer.ver_frente():
+                if proyecto.tareas_proximas_avencer.ver_frente() is None:
+                    proyecto.tareas_proximas_avencer.agregar(i)
+                    break
+                   
+                elif (i.fecha_fin-i.fecha_inicio) < (proyecto.tareas_proximas_avencer.ver_frente().fecha_fin-proyecto.tareas_proximas_avencer.ver_frente().fecha_inicio):
                     proyecto.tareas_proximas_avencer.agregar(i)
                     break
                 elif proyecto.tareas_proximas_avencer.fin.siguiente is not None and proyecto.tareas_proximas_avencer.esta_vacia():
@@ -167,7 +175,7 @@ def agregar_tarea_venc(proyecto):
                         proyecto.tareas_proximas_avencer.agregar(temp)
                         break
                 else:
-                    lista_temp.append(proyecto.tareas_proximas_avencer.eliminar_frente())
+                    lista_temp.append(proyecto.tareas_proximas_avencer.eliminar_frente(i))
             n = -1
             break
         n = n + 1
