@@ -4,25 +4,25 @@ from tareas import Tareas
 def agregar_tarea( proyecto):
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
-    cliente = input("Ingrese el nombre del cliente: ")
+    
     descripcion = input("Ingrese una descripción de la tarea: ")
     fecha_de_inicio = input("Ingrese la fecha de inicio de la tarea separada por guiones: ")
     fecha_de_vencimiento = input("Ingrese la fecha de vencimiento separada por guiones: ")
     estado = "Pendiente"
     porcentaje = 0
-    tarea = Tareas(nombre, empresa, cliente, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado, porcentaje)
+    tarea = Tareas(nombre, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado,empresa, porcentaje)
     proyecto.tareas.append(tarea)
 
 def insertar_tarea( proyecto, i):
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
-    cliente = input("Ingrese el nombre del cliente: ")
+    
     descripcion = input("Ingrese una descripción de la tarea: ")
     fecha_de_inicio = input("Ingrese la fecha de inicio de la tarea separada por guiones: ")
     fecha_de_vencimiento = input("Ingrese la fecha de vencimiento separada por guiones: ")
     estado = "Pendiente"
     porcentaje = 0
-    tarea = Tareas(nombre, empresa, cliente, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado, porcentaje)
+    tarea = Tareas(nombre, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado,empresa, porcentaje)
     proyecto.tareas.insert(i, tarea)
 
 def modificar_tarea(proyecto, id):
@@ -143,7 +143,7 @@ def eliminar_prioritaria(proyecto):
 def consultar_prioritaria(proyecto):
     if proyecto.tareas_prioritarias.ver_tope():
         tarea = proyecto.tareas_prioritarias.ver_tope()
-        print(f"{tarea.nombre} {tarea.empresa} {tarea.cliente}")
+        print(f"{tarea.nombre} {tarea.empresa}")
     else:
         print("No hay ninguna tarea marcada como prioritaria")
 
@@ -195,5 +195,5 @@ def consultar_tarea_venc(proyecto):
 
 def elegir_proyecto(proyectos, id):
     for i in proyectos:
-        if i.id == id:
+        if i.nombre == id:
             return i

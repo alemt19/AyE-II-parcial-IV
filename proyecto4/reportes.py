@@ -8,7 +8,7 @@ def consultar_tareas_estado(proyecto, est):
     
     if tareas_filtradas:
         for i in tareas_filtradas:
-            print(f"{i.nombre} {i.descripcion} {i.fecha_inicio} {i.fecha_fin} {i.estado} {i.empresa} {i.cliente} {i.porcentaje}")
+            print(f"{i.nombre}, {i.descripcion}, {i.fecha_inicio}, {i.fecha_fin}, {i.estado}, {i.empresa}, {i.porcentaje}")
     else:
         print("No se han encontrado tareas con el estado deseado.")
 
@@ -17,7 +17,7 @@ def filtrado_por_fecha(proyecto):
     print("1. Tareas dentro de un intervalo de fechas")
     print("2. Tareas antes de una fecha")
     print("3. Tareas despues de una fecha")
-    x = input("Ingrese la opción de filtrado deseada: ")
+    x = int(input("Ingrese la opción de filtrado deseada: "))
 
     if x == 1:
         fi = input("ingrese la fecha inicial del intervalo en formato YYYY-MM-DD: ")
@@ -25,24 +25,24 @@ def filtrado_por_fecha(proyecto):
         ff = input("ingrese la fecha final del intervalo en formato YYYY-MM-DD: ")
         fecha_f = datetime.strptime(ff, "%Y-%m-%d")
         for i in proyecto.tareas:
-            if fecha_i < i.fecha.inicio and fecha_f > i.fecha_fin:
+            if fecha_i < i.fecha_inicio and fecha_f > i.fecha_fin:
                 tareas_filtradas.append(i)
     elif x == 2:
         f = input("ingrese una fecha, posterior a las tareas que desea ver, en formato YYYY-MM-DD: ")
         fecha = datetime.strptime(f, "%Y-%m-%d")
         for i in proyecto.tareas:
-            if fecha > i.fecha.fin:
+            if fecha > i.fecha_fin:
                 tareas_filtradas.append(i)
     elif x == 3:
         f = input("ingrese una fecha, anterior a las tareas que desea ver, en formato YYYY-MM-DD: ")
         fecha = datetime.strptime(f, "%Y-%m-%d")
         for i in proyecto.tareas:
-            if fecha < i.fecha.inicio:
+            if fecha < i.fecha_inicio:
                 tareas_filtradas.append(i)
 
     if tareas_filtradas:
         for i in tareas_filtradas:
-            print(f"{i.nombre} {i.descripcion} {i.fecha_inicio} {i.fecha_fin} {i.estado} {i.empresa} {i.cliente} {i.porcentaje}")
+            print(f"{i.nombre}, {i.descripcion}, {i.fecha_inicio}, {i.fecha_fin}, {i.estado}, {i.empresa}, {i.porcentaje}")
     else:
         print("No se han encontrado tareas que cumplan con las condiciones dadas.")
     
@@ -53,7 +53,7 @@ def consultar_proyectos(proyectos):
     print("3. Filtrar por fecha de vencimiento")
     print("4. Filtrar por estado")
     print("5. Filtrar por empresa")
-    x = input("Ingrese el número del tipo de filtrado: ")
+    x = int(input("Ingrese el número del tipo de filtrado: "))
 
     if x == 1:
         nombre = input("Ingrese el nombre de los proyectos a filtrar: ")
@@ -98,15 +98,15 @@ def consultar_proyectos(proyectos):
             else:
                 porcentaje = (completadas/n)*100
 
-            print(f"{i.nombre} {i.descripcion} {i.fecha_inicio} {i.fecha_fin} {i.estado} {i.empresa} {i.gerente} {i.equipo} Porcentaje: {porcentaje}")
+            print(f"{i.nombre}, {i.descripcion}, {i.fecha_inicio}, {i.fecha_fin}, {i.estado}, {i.empresa}, {i.gerente}, {i.equipo}, Porcentaje: {porcentaje}")
     else:
         print("No se han encontrado tareas que cumplan con las condiciones dadas.")
 
 def listar_subtareas(proyecto):
 
     for i in proyecto.tareas:
-            print(f"{i.nombre} {i.descripcion} {i.fecha_inicio} {i.fecha_fin} {i.estado} {i.empresa} {i.cliente} {i.porcentaje}")
-            for j in i:
-                print(f"---{j.nombre} {j.descripcion} {j.estado}")
+        print(f"{i.nombre}, {i.descripcion}, {i.fecha_inicio}, {i.fecha_fin}, {i.estado}, {i.empresa}, {i.porcentaje}")
+        for j in i.subtareas:
+            print(f"---{j.nombre} {j.descripcion} {j.estado}")
             
     

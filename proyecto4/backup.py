@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import tareas as tr
 from proyecto import Proyecto as pr
+import subtareas as st
 import os
 
 def cargar_datos_desde_json():
@@ -15,6 +16,7 @@ def cargar_datos_desde_json():
     # Cargar datos de proyectos
     with open(ruta_proyectos, "r") as archivo:
         datos = json.load(archivo)
+        va=0
         for proyecto_data in datos:
             proyecto = pr(
                 proyecto_data["nombre"],
@@ -29,16 +31,27 @@ def cargar_datos_desde_json():
             
             proyecto.id = proyecto_data["id"]  # Asigna el ID desde los datos cargados
             for i in proyecto_data["tareas"]:
-                proyecto.tareas.append(tr.Tareas(i["id"],
+                proyecto.tareas.append(tr.Tareas(
                                        i["nombre"],
                                        i["descripcion"],
-                                       i["fecha_inicio"],
-                                       i["fecha_vencimiento"],
+                                       datetime.strptime(i["fecha_inicio"],"%Y-%m-%d"),
+                                       datetime.strptime(i["fecha_vencimiento"],"%Y-%m-%d"),
                                        i["estado"],
-                                       i["empresa"],
-                                       i["cliente"],
+                                       i["empresa_cliente"],
                                        i["porcentaje"],
-                                       i["subtareas"]))
+                                       ))
+                for j in i["subtareas"]:
+                    if va<len(proyecto_data["tareas"]):
+
+                        proyecto.tareas[va].subtareas.append(
+                            st.Subtarea(
+                                j["nombre"],
+                                j["descripcion"],
+                                j["estado"]
+                            )
+                        )
+                va+=1
+                        
             proyectos.append(proyecto)
     
     # Cargar subtareas desde subtareas.json

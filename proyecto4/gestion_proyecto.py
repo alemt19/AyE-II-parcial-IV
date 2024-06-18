@@ -40,6 +40,7 @@ class Gestion:
             elif x == 2:
                 nombre = input("Ingrese el nombre del proyecto del que se desea gestionar las tareas: ")
                 proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
+                print(proyecto)
                 print("------------------------")
                 print("-presione 1 para agregar una nueva tarea")
                 print("-presione 2 para insertar una nueva tarea en una posición dada")
@@ -106,7 +107,7 @@ class Gestion:
                     nombre = input("Ingrese el nombre del proyecto del que se desea filtrar las tareas: ")
                     proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
                     estado = input("Ingrese el estado de las tareas que se desean filtrar: ")
-                    reportes.consultar_tareas_estado(proyecto)
+                    reportes.consultar_tareas_estado(proyecto,estado)
                 elif x == 2:
                     nombre = input("Ingrese el nombre del proyecto del que se desea gestionar las tareas: ")
                     proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
