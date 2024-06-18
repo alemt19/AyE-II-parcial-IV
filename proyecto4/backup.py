@@ -28,6 +28,7 @@ def cargar_datos_desde_json():
                 proyecto_data["gerente"],
                 proyecto_data["equipo"]
             )
+            va=0
             
             proyecto.id = proyecto_data["id"]  # Asigna el ID desde los datos cargados
             for i in proyecto_data["tareas"]:

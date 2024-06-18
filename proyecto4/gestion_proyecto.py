@@ -55,8 +55,8 @@ class Gestion:
                 if x == 1:
                     gestion_tareas.agregar_tarea(proyecto)
                 elif x == 2:
-                    i = input(f"Inserte la posición especifica donde quiera agregar la tarea (cantidad actual de tareas: {len(proyecto.tareas)}): ")
-                    gestion_tareas.insertar_tarea(proyecto, i)
+                    i = int(input(f"Inserte la posición especifica donde quiera agregar la tarea (cantidad actual de tareas: {len(proyecto.tareas)}): "))
+                    gestion_tareas.insertar_tarea(proyecto,i)
                 elif x == 3:
                     id = int(input("Ingrese el id de la tarea que desea modificar: "))
                     gestion_tareas.modificar_tarea(proyecto, id)
@@ -82,7 +82,7 @@ class Gestion:
                 elif x == 7:
                     print("------------------------")
                     print("-presione 1 para agregar una tarea cercana a su fecha de vencimiento")
-                    print("-presione 2 para agregar una tarea cercana a su fecha de vencimiento")
+                    print("-presione 2 para eliminar una tarea cercana a su fecha de vencimiento")
                     print("-presione 3 para consultar la tarea con más cercana a su fecha de vencimiento")
                     print("-presione 0 para salir del programa")
                     x = int(input("ingrese una opcion: "))

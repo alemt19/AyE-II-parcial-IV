@@ -17,7 +17,7 @@ class Cola:
         else:
             self.fin.siguiente = nodo_nuevo
         self.fin = nodo_nuevo
-    def eliminar_frente(self,valor):
+    def eliminar_frente(self):
         if self.esta_vacia():
             return None
         else:

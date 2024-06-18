@@ -107,7 +107,7 @@ def buscar_tarea (proyecto):
         for i in tareas:
             print(f"{i.nombre}")
         
-def eliminar_tarea( proyecto):
+def eliminar_tarea(proyecto):
     nombre = input("Ingrese el nombre de la tarea que se desea eliminar: ")
     n = 0
     for i in proyecto.tareas:
@@ -162,20 +162,14 @@ def agregar_tarea_venc(proyecto):
                     proyecto.tareas_proximas_avencer.agregar(i)
                     break
                    
-                elif (i.fecha_fin-i.fecha_inicio) < (proyecto.tareas_proximas_avencer.ver_frente().fecha_fin-proyecto.tareas_proximas_avencer.ver_frente().fecha_inicio):
+                elif (i.fecha_fin-i.fecha_inicio) > (proyecto.tareas_proximas_avencer.ver_frente().fecha_fin-proyecto.tareas_proximas_avencer.ver_frente().fecha_inicio):
                     proyecto.tareas_proximas_avencer.agregar(i)
                     break
-                elif proyecto.tareas_proximas_avencer.fin.siguiente is not None and proyecto.tareas_proximas_avencer.esta_vacia():
-                    if i.fecha_fin < proyecto.tareas_proximas_avencer.ver_frente():
-                        proyecto.tareas_proximas_avencer.agregar(i)
-                        break
-                    else:
-                        temp = proyecto.tareas_proximas_avencer.eliminar_frente()
-                        proyecto.tareas_proximas_avencer.agregar(i)
-                        proyecto.tareas_proximas_avencer.agregar(temp)
-                        break
                 else:
-                    lista_temp.append(proyecto.tareas_proximas_avencer.eliminar_frente(i))
+                    temp = proyecto.tareas_proximas_avencer.eliminar_frente()
+                    proyecto.tareas_proximas_avencer.agregar(i)
+                    proyecto.tareas_proximas_avencer.agregar(temp)
+                    break
             n = -1
             break
         n = n + 1
