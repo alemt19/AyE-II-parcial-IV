@@ -26,9 +26,9 @@ def cargar_datos_desde_json(self):
         print("Archivo no encontrado. Iniciando con lista vacía.")
         return []  # Si no se encuentra el archivo, retornamos una lista vacía
 
-def guardar_datos_en_json(self):
+def guardar_datos_en_json(self, proyectos):
     data = []
-    for proyecto in self.proyectos:
+    for proyecto in proyectos:
         proyecto_data = {
             "id": proyecto.id,
             "nombre": proyecto.nombre,
@@ -49,8 +49,19 @@ def guardar_datos_en_json(self):
                 "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
                 "fecha_vencimiento": tarea.fecha_vencimiento.strftime("%Y-%m-%d"),
                 "estado": tarea.estado,
+                "empresa": tarea.empresa,
+                "porcentaje": tarea.porcentaje,
+                "subtareas" : []
                 # Agregar otros atributos de tarea según sea necesario
             }
+            for subtarea in tarea.subtareas:
+                subtarea_data = {
+                    "id": subtarea.id,
+                    "nombre": subtarea.nombre,
+                    "descripcion": subtarea.descripcion,
+                    "estado": subtarea.estado,
+                }
+                tarea_data["subtareas"].append(subtarea_data)
             proyecto_data["tareas"].append(tarea_data)
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
 
