@@ -107,10 +107,17 @@ def eliminar_proyecto(self):
             return
     print(f"No se encontró ningún proyecto con el nombre {nombre_proyecto}.")
 
-def mostrar_proyectos(self):
-    for proyecto in self.proyectos:
+def mostrar_proyectos(self, proyectos=None):
+    if proyectos is None:
+        proyectos = self.proyectos
+    
+    for proyecto in proyectos:
         print(f"Proyecto: {proyecto.nombre}")
         for tarea in proyecto.tareas:
             print(f"\tTarea: {tarea.nombre}")
-            for subtarea in tarea.subtareas:
-                print(f"\t\tSubtarea: {subtarea.nombre}")  # Mostramos los proyectos y sus tareas/subtareas
+            if hasattr(tarea, 'subtareas') and tarea.subtareas:
+                for subtarea in tarea.subtareas:
+                    print(f"\t\tSubtarea: {subtarea.nombre}")
+            else:
+                print("\t\tNo hay subtareas")
+
