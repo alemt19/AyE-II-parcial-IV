@@ -32,6 +32,7 @@ def cargar_datos_desde_json():
             
             proyecto.id = proyecto_data["id"]  # Asigna el ID desde los datos cargados
             for i in proyecto_data["tareas"]:
+                
                 proyecto.tareas.append(tr.Tareas(
                                        i["nombre"],
                                        i["descripcion"],

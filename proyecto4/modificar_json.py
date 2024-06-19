@@ -26,7 +26,7 @@ def cargar_datos_desde_json(self):
         print("Archivo no encontrado. Iniciando con lista vacía.")
         return []  # Si no se encuentra el archivo, retornamos una lista vacía
 
-def guardar_datos_en_json(self, proyectos):
+def guardar_datos_en_json(proyectos):
     data = []
     for proyecto in proyectos:
         proyecto_data = {
@@ -34,7 +34,7 @@ def guardar_datos_en_json(self, proyectos):
             "nombre": proyecto.nombre,
             "descripcion": proyecto.descripcion,
             "fecha_inicio": proyecto.fecha_inicio.strftime("%Y-%m-%d"),
-            "fecha_vencimiento": proyecto.fecha_vencimiento.strftime("%Y-%m-%d"),
+            "fecha_vencimiento": proyecto.fecha_fin.strftime("%Y-%m-%d"),
             "estado": proyecto.estado,
             "empresa": proyecto.empresa,
             "gerente": proyecto.gerente,
@@ -47,9 +47,9 @@ def guardar_datos_en_json(self, proyectos):
                 "nombre": tarea.nombre,
                 "descripcion": tarea.descripcion,
                 "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
-                "fecha_vencimiento": tarea.fecha_vencimiento.strftime("%Y-%m-%d"),
+                "fecha_vencimiento": tarea.fecha_fin.strftime("%Y-%m-%d"),
                 "estado": tarea.estado,
-                "empresa": tarea.empresa,
+                "empresa_cliente": tarea.empresa,
                 "porcentaje": tarea.porcentaje,
                 "subtareas" : []
                 # Agregar otros atributos de tarea según sea necesario
@@ -65,7 +65,7 @@ def guardar_datos_en_json(self, proyectos):
             proyecto_data["tareas"].append(tarea_data)
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
 
-    with open(self.file_path, 'w') as file:
+    with open("C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/datos.json", 'w') as file:
         json.dump(data, file, indent=4)  # Escribimos los datos en el archivo JSON con formato indentado
 
 def filtrar_tareas_por_rango(self, fecha_inicio, fecha_fin):
