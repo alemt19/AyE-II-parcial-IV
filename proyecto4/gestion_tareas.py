@@ -1,10 +1,12 @@
 from datetime import datetime
 from tareas import Tareas
 
-def agregar_tarea( proyecto):
+def agregar_tarea(proyecto):
+    # Funcion que pide por teclado los atributos de una nueva tarea
+    # Para agregarse a un objeto Proyecto dado
+
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
-    
     descripcion = input("Ingrese una descripción de la tarea: ")
     fecha_de_inicio = input("Ingrese la fecha de inicio de la tarea separada por guiones: ")
     fi=datetime.strptime(fecha_de_inicio,"%Y-%m-%d")
@@ -15,10 +17,12 @@ def agregar_tarea( proyecto):
     tarea = Tareas(nombre, descripcion, fi, fv, estado,empresa, porcentaje)
     proyecto.tareas.append(tarea)
 
-def insertar_tarea( proyecto, i):
+def insertar_tarea(proyecto, i):
+    # Funcion que inserta una nueva tarea de forma similar a la funcion anterior
+    # Solo que se inserta en un indice especificado
+
     nombre = input("Ingrese el nombre de la tarea a agregar: ")
     empresa = input("Ingrese la empresa: ")
-    
     descripcion = input("Ingrese una descripción de la tarea: ")
     fecha_de_inicio = input("Ingrese la fecha de inicio de la tarea separada por guiones: ")
     fecha_de_vencimiento = input("Ingrese la fecha de vencimiento separada por guiones: ")
@@ -27,11 +31,16 @@ def insertar_tarea( proyecto, i):
     tarea = Tareas(nombre, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado,empresa, porcentaje)
     proyecto.tareas.insert(i, tarea)
 
-def modificar_tarea(proyecto, id):
-    if id>=len(proyecto.tareas):
-        print("indice fuera de rango")
+def modificar_tarea(proyecto, nombre):
+    tarea = None
+    for i in proyecto.tareas:
+        if nombre == i.nombre:
+            tarea = i
+            break
+    
+    if tarea is None:
+        print("No se ha encontrado una tarea con el nombre dado")
     else:
-        tarea = proyecto.tareas[id]
         print("-presione 1 para modificar el nombre")
         print("-presione 2 para modificar la empresa")
         print("-presione 3 para modificar el cliente")

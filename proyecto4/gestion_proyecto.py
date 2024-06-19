@@ -58,8 +58,8 @@ class Gestion:
                     i = int(input(f"Inserte la posición especifica donde quiera agregar la tarea (cantidad actual de tareas: {len(proyecto.tareas)}): "))
                     gestion_tareas.insertar_tarea(proyecto,i)
                 elif x == 3:
-                    id = int(input("Ingrese el id de la tarea que desea modificar: "))
-                    gestion_tareas.modificar_tarea(proyecto, id)
+                    nombre = input("Ingrese el nombre de la tarea que desea modificar: ")
+                    gestion_tareas.modificar_tarea(proyecto, nombre)
                 elif x == 4:
                     gestion_tareas.buscar_tarea(proyecto)
                 elif x == 5:
