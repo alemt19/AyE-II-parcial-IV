@@ -1,12 +1,17 @@
 from datetime import datetime
 
 def consultar_tareas_estado(proyectos, est):
+    # Funcion que imprime todas las tareas de todos los proyectos si coinciden con el estado
+    # Especificado por el usuario
     tareas_filtradas = []
-    bandera=0
+    bandera=0 # Bandera que permite imprimir el nombre del proyecto al que corresponden  las tareas
  
     for i in proyectos:
+        # Ciclo para evaluar cada proyecto
         for j in i.tareas:
+            # ciclo para evaluar cada tarea del proyecto i
             if est == j.estado:
+                # Si coincide el estado dado con el de la tarea se agrega
                 if bandera == 0:
                     tareas_filtradas.append(f"{i.nombre}:\n")
                     bandera = 1
@@ -15,6 +20,7 @@ def consultar_tareas_estado(proyectos, est):
         bandera = 0
     
     if tareas_filtradas:
+        # Si se encuentran tareas con el estado dado se imprimen sus datos
         for i in tareas_filtradas:
             print(i)
     else:
