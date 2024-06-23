@@ -65,7 +65,7 @@ def guardar_datos_en_json(proyectos):
             proyecto_data["tareas"].append(tarea_data)
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
 
-    with open("C:/Users/Usuario/OneDrive/Documentos/curso-github/AyE-II-parcial-IV/proyecto4/datos.json", 'w') as file:
+    with open("proyecto4\datos.json", 'w') as file:
         json.dump(data, file, indent=4)  # Escribimos los datos en el archivo JSON con formato indentado
 
 def filtrar_tareas_por_rango(self, fecha_inicio, fecha_fin):

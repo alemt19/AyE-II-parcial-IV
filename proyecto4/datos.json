@@ -1,158 +1,5 @@
 [
     {
-        "id": 1,
-        "nombre": "Proyecto 1",
-        "descripcion": "Descripci\u00c3\u00b3n del proyecto 1",
-        "fecha_inicio": "2024-06-01",
-        "fecha_vencimiento": "2024-06-30",
-        "estado": "Completado",
-        "empresa": "Empresa A",
-        "gerente": "Gerente A",
-        "equipo": [
-            "Equipo A"
-        ],
-        "tareas": [
-            {
-                "id": 1,
-                "nombre": "Tarea 1",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
-                "fecha_inicio": "2024-06-01",
-                "fecha_vencimiento": "2024-06-30",
-                "estado": "Completado",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 50,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Completada"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
-                        "estado": "Completada"
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "nombre": "Tarea 2",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 2",
-                "fecha_inicio": "2024-06-02",
-                "fecha_vencimiento": "2024-06-10",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 30,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 3",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
-                        "estado": "Completada"
-                    }
-                ]
-            },
-            {
-                "id": 3,
-                "nombre": "Tarea 3",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 3",
-                "fecha_inicio": "2024-06-05",
-                "fecha_vencimiento": "2024-06-20",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 20,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    }
-                ]
-            },
-            {
-                "id": 4,
-                "nombre": "Tarea 4",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 4",
-                "fecha_inicio": "2024-06-10",
-                "fecha_vencimiento": "2024-06-25",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 10,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 3",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
-                        "estado": "Pendiente"
-                    }
-                ]
-            },
-            {
-                "id": 5,
-                "nombre": "Tarea 5",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 5",
-                "fecha_inicio": "2024-06-15",
-                "fecha_vencimiento": "2024-06-30",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 5,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 3",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 4",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 4",
-                        "estado": "Pendiente"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "id": 2,
         "nombre": "Proyecto 2",
         "descripcion": "Descripci\u00c3\u00b3n del proyecto 2",
@@ -166,7 +13,7 @@
         ],
         "tareas": [
             {
-                "id": 6,
+                "id": 1,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-07-01",
@@ -176,13 +23,13 @@
                 "porcentaje": 75,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -205,7 +52,7 @@
         ],
         "tareas": [
             {
-                "id": 7,
+                "id": 2,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-08-01",
@@ -215,13 +62,13 @@
                 "porcentaje": 80,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -244,7 +91,7 @@
         ],
         "tareas": [
             {
-                "id": 8,
+                "id": 3,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-09-01",
@@ -254,13 +101,13 @@
                 "porcentaje": 90,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -283,7 +130,7 @@
         ],
         "tareas": [
             {
-                "id": 9,
+                "id": 4,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-10-01",
@@ -293,13 +140,13 @@
                 "porcentaje": 90,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -322,7 +169,7 @@
         ],
         "tareas": [
             {
-                "id": 10,
+                "id": 5,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-11-01",
@@ -332,13 +179,13 @@
                 "porcentaje": 85,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -361,7 +208,7 @@
         ],
         "tareas": [
             {
-                "id": 11,
+                "id": 6,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-12-01",
@@ -371,13 +218,13 @@
                 "porcentaje": 95,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -400,7 +247,7 @@
         ],
         "tareas": [
             {
-                "id": 12,
+                "id": 7,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2025-01-01",
@@ -410,52 +257,13 @@
                 "porcentaje": 100,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
-                        "estado": "Pendiente"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 9,
-        "nombre": "Proyecto 9",
-        "descripcion": "Descripci\u00c3\u00b3n del proyecto 9",
-        "fecha_inicio": "2025-02-01",
-        "fecha_vencimiento": "2025-02-28",
-        "estado": "En progreso",
-        "empresa": "Empresa I",
-        "gerente": "Gerente I",
-        "equipo": [
-            "Equipo I"
-        ],
-        "tareas": [
-            {
-                "id": 13,
-                "nombre": "Tarea 1",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
-                "fecha_inicio": "2025-02-01",
-                "fecha_vencimiento": "2025-02-28",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa I",
-                "porcentaje": 100,
-                "subtareas": [
-                    {
-                        "id": 31,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -478,7 +286,7 @@
         ],
         "tareas": [
             {
-                "id": 14,
+                "id": 8,
                 "nombre": "Tarea 1",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
                 "fecha_inicio": "2024-07-01",
@@ -488,13 +296,13 @@
                 "porcentaje": 75,
                 "subtareas": [
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 31,
+                        "id": 16,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -515,7 +323,7 @@
         "equipo": "dfg",
         "tareas": [
             {
-                "id": 15,
+                "id": 9,
                 "nombre": "Tarea 1",
                 "descripcion": "sdf",
                 "fecha_inicio": "2024-12-12",

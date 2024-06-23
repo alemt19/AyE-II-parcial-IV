@@ -40,7 +40,6 @@ class Gestion:
             elif x == 2:
                 nombre = input("Ingrese el nombre del proyecto del que se desea gestionar las tareas: ")
                 proyecto = gestion_tareas.elegir_proyecto(self.proyectos, nombre)
-                print(proyecto)
                 print("------------------------")
                 print("-presione 1 para agregar una nueva tarea")
                 print("-presione 2 para insertar una nueva tarea en una posición dada")
@@ -137,8 +136,14 @@ class Gestion:
         print("---------------------------")
     
     def modificar_proyecto(self):
-        m = input("ingrese el nombre del proyecto a modificar: ")
-        if self.proyectos.buscar_nombre(m):
+        nombre = input("ingrese el nombre del proyecto a modificar: ")
+        proyecto = None
+        for i in self.proyectos:
+                if nombre == i.nombre:
+                    proyecto = i
+                    break
+        
+        if proyecto is not None:
             print("-presione 1 para modificar el nombre")
             print("-presione 2 para modificar la descripcion")
             print("-presione 3 para modificar la fecha de inicio")
@@ -149,10 +154,7 @@ class Gestion:
             print("-presione 8 para modificar el equipo")
             xm = int(input("ingrese una opcion: "))
             print("-------------------------------")
-            for i in self.proyectos:
-                if m == i.nombre:
-                    proyecto = i
-                    break
+            
             
             if xm == 1:
                 nuevo_nombre = input("ingrese el nuevo nombre del proyecto: ")
@@ -220,10 +222,13 @@ class Gestion:
 
     def eliminar_proyecto(self):
         m = input("ingrese el nombre del proyecto a eliminar: ")
+        cont=0
         for i in self.proyectos:
+            cont+=1
             if m == i.nombre:
-                self.proyectos.pop(i)
+                self.proyectos.pop(cont-1)
     
     def listar_proyectos(self):
+        print(self.proyectos[0].nombre)
         for i in self.proyectos:
             print(f"-{i.nombre}")

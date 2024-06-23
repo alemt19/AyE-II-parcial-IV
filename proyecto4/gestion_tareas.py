@@ -25,10 +25,12 @@ def insertar_tarea(proyecto, i):
     empresa = input("Ingrese la empresa: ")
     descripcion = input("Ingrese una descripción de la tarea: ")
     fecha_de_inicio = input("Ingrese la fecha de inicio de la tarea separada por guiones: ")
+    fi=datetime.strptime(fecha_de_inicio,"%Y-%m-%d")
     fecha_de_vencimiento = input("Ingrese la fecha de vencimiento separada por guiones: ")
+    fv=datetime.strptime(fecha_de_vencimiento,"%Y-%m-%d")
     estado = "Pendiente"
     porcentaje = 0
-    tarea = Tareas(nombre, descripcion, fecha_de_inicio, fecha_de_vencimiento, estado,empresa, porcentaje)
+    tarea = Tareas(nombre, descripcion, fi, fv, estado,empresa, porcentaje)
     proyecto.tareas.insert(i, tarea)
 
 def modificar_tarea(proyecto, nombre):
