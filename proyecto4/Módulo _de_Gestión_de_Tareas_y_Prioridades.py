@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from proyecto4.subtareas import Subtarea
+from subtareas import Subtarea
 
 class Tarea:
     id_counter = 0
