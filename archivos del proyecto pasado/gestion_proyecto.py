@@ -1,9 +1,8 @@
 from datetime import datetime
-import cola as co
 import proyecto as pr
-from tareas import Tareas
 import gestion_tareas
 import reportes
+from gestion_proyecto_arbolAVL import AVLTree
 
 class Gestion:
     def __init__(self):
@@ -118,7 +117,8 @@ class Gestion:
 
 
         print("fin del programa")
-    
+
+
     def crear_proyecto(self):
         nom = input("ingrese el nombre del proyecto: ")
         desc = input("ingrese la descripcion del proyecto: ")
