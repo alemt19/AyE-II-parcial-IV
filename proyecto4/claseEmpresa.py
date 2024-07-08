@@ -14,4 +14,3 @@ class Empresa:
         self.gerente = gerente
         self.equipo_contacto = equipo_contacto
         self.proyectos = AVLTree()
-            
