@@ -1,13 +1,13 @@
 import gestion_proyecto_arbolAVL as gestionProyectos
-from proyecto import Proyecto
 from gestionEmpresas import ListaEnlazada
 import gestionEmpresas
 import gestionTareas
 from backup import cargar_datos_desde_json
+from backup import cargar_datos_desde_csv
 
 def menuPrincipal():
     tree = cargar_datos_desde_json()
-    empresas = ListaEnlazada()
+    empresas = cargar_datos_desde_csv(tree)
 
     while True:
         # Menú principal
@@ -41,7 +41,7 @@ def menuPrincipal():
                 elif opcion == "4":
                     gestionEmpresas.eliminar_empresa(empresas)
                 elif opcion == "5":
-                    gestionEmpresas.eliminar_empresas
+                    gestionEmpresas.modificar_empresa(empresas)
                 elif opcion == "6":
                     print("Saliendo del programa.")
                     break
@@ -50,7 +50,9 @@ def menuPrincipal():
 
         elif opcion == "2":
             # Menú de proyectos
-            gestionProyectos.menu(tree)
+            idEmpresa = input("Ingrese el ID de la empresa de la cual desea gestionar los proyectos")
+            proyectos = (empresas.obtener(idEmpresa)).proyectos
+            gestionProyectos.menu(proyectos)
 
         elif opcion == "3":
             nombre = input("Ingrese el nombre del proyecto del cual quiere gestionar sus tareas: ")

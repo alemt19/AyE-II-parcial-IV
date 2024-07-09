@@ -1,11 +1,13 @@
 import json
-from datetime import datetime
+from lista import ListaEnlazada
+from claseEmpresa import Empresa
 from gestionTareas import Tarea
 from proyecto import Proyecto as pr
 from subtarea import Subtarea
 import os
 import gestion_proyecto_arbolAVL as gestionProyecto
 from reportes_proyecto2 import NaryTree
+import csv
 
 def cargar_datos_desde_json():
     proyectos = gestionProyecto.AVLTree()
@@ -87,9 +89,29 @@ def cargar_datos_desde_json():
     
     return proyectos
 
+def cargar_datos_desde_csv(proyectosJSON):
+    empresas = ListaEnlazada()
+    # Leer los datos del archivo CSV datosEmpresa
+    with open('proyecto4/datosEmpresas.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if not row[1] == "nombre":
+                print(row[3])
+                empresa = Empresa(
+                    row[1],
+                    row[2],
+                    row[3],
+                    row[4],
+                    row[5],
+                    row[6],
+                    row[7],
+                    row[8],
+                )
+                empresa.id = int(row[0])
+                proyectosAsociados = row[9].split("-")
 
+                for i in proyectosAsociados:
+                    empresa.proyectos.insert(proyectosJSON.buscar_proyecto(proyectosJSON.root, "nombre", i))
 
-
-
-
-
+                empresas.agregar(empresa)
+    return empresas

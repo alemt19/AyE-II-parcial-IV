@@ -174,14 +174,14 @@ def eliminar_empresa(empresas):
 def consultar_empresa(empresas):
     i = int(input("Ingrese el ID de la empresa que desea consultar: "))
     
-    if (empresas.obtener(i)):
-        empresa = empresas.obtener(i)
-        print(f"{empresa.nombre}, {empresa.descripcion}, {empresa.f_creacion}, {empresa.direccion}, {empresa.correo}, {empresa.telefono}, {empresa.gerente}, {empresa.contacto}")
+    if (empresas.obtener(i-1)):
+        empresa = empresas.obtener(i-1)
+        print(f"{empresa.nombre}, {empresa.descripcion}, {empresa.f_creacion}, {empresa.direccion}, {empresa.correo}, {empresa.telefono}, {empresa.gerente}, {empresa.equipo_contacto}")
     else:
         print("No se ha encontrado una empresa con el ID dado")
 
 def listar_empresas(empresas):
     print("Lista de empresas cliente: ")
     for i in range(0, empresas.longitud):
-        print(f"{empresas.obtener[i].nombre}, {empresas.obtener[i].descripcion}, {empresas.obtener[i].f_creacion}, {empresas.obtener[i].direccion}, {empresas.obtener[i].correo}, {empresas.obtener[i].telefono}, {empresas.obtener[i].gerente}, {empresas.obtener[i].contacto}")
+        print(f"{empresas.obtener(i).nombre}, {empresas.obtener(i).descripcion}, {empresas.obtener(i).f_creacion}, {empresas.obtener(i).direccion}, {empresas.obtener(i).correo}, {empresas.obtener(i).telefono}, {empresas.obtener(i).gerente}, {empresas.obtener(i).equipo_contacto}")
         

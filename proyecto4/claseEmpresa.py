@@ -1,3 +1,4 @@
+from datetime import datetime
 from gestion_proyecto_arbolAVL import AVLTree
 
 class Empresa:
@@ -7,7 +8,7 @@ class Empresa:
         Empresa.id += 1
         self.nombre = nombre
         self.descripcion = descripcion
-        self.f_creacion = f_creacion
+        self.f_creacion = datetime.strptime(f_creacion, '%Y-%m-%d')
         self.direccion = direccion
         self.telefono = telefono
         self.correo = correo

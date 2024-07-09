@@ -1,0 +1,4 @@
+id,nombre,descripcion,f_creacion,direccion,telefono,correo,gerente,equipo_contacto,proyecto
+1,Empresa 1,Descripción de la empresa 1,2024-07-09,Carabobo,0424-4679603,gerenteA@gmail.com,Gerente A,@equipoContacto,Proyecto 1
+2,Empresa 2,Descripción de la empresa 2,2024-07-10,Caracas,0424-4679604,gerenteB@gmail.com,Gerente B,@equipoContacto2,Proyecto 2
+3,Empresa 3,Descripción de la empresa 3,2024-07-11,Maracay,0424-4679605,gerenteC@gmail.com,Gerente C,@equipoContacto3,Proyecto 3
