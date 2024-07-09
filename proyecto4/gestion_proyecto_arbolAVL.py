@@ -143,26 +143,27 @@ class AVLTree:
         node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
         return self._balance(node)
     
-    def buscar_proyecto(self, criteria, value):
-        if not self.root:
+    def buscar_proyecto(self, root, criteria, value):
+        if not root:
             return None
-        if criteria == 'id' and self.root.key.id == value:
-            return self.root
-        elif criteria == 'nombre' and self.root.key.nombre == value:
-            return self.root
-        elif criteria == 'gerente' and self.root.key.gerente == value:
-            return self.root
-        elif criteria == 'fecha_inicio' and self.root.key.fecha_inicio == value:
-            return self.root
-        elif criteria == 'fecha_vencimiento' and self.root.key.fecha_vencimiento == value:
-            return self.root
-        elif criteria == 'estado_actual' and self.root.key.estado_actual == value:
-            return self.root
+        if criteria == 'id' and root.key.id == value:
+            return root
+        elif criteria == 'nombre' and root.key.nombre == value:
+            return root
+        elif criteria == 'gerente' and root.key.gerente == value:
+            return root
+        elif criteria == 'fecha_inicio' and root.key.fecha_inicio == value:
+            return root
+        elif criteria == 'fecha_fin' and root.key.fecha_fin == value:
+            return root
+        elif criteria == 'estado_actual' and root.key.estado_actual == value:
+            return root
         
-        left_search = self.buscar_proyecto(self.root.left, criteria, value)
+        left_search = self.buscar_proyecto(root.left, criteria, value)
         if left_search:
             return left_search
-        return self.buscar_proyecto(self.root.right, criteria, value)
+        return self.buscar_proyecto(root.right, criteria, value)
+
     
     
     def inorder_traversal(self):
@@ -192,22 +193,22 @@ def consulta_proyecto(tree):
 
         if opcion == "1":
             id_proyecto = int(input("ID del proyecto a consultar: "))
-            result = tree.buscar_proyecto( 'id', id_proyecto)
+            result = tree.buscar_proyecto(tree.root, 'id', id_proyecto)
         elif opcion == "2":
             nombre = input("Nombre del proyecto a consultar: ")
-            result = tree.buscar_proyecto( 'nombre', nombre)
+            result = tree.buscar_proyecto(tree.root, 'nombre', nombre)
         elif opcion == "3":
             gerente = input("Gerente del proyecto a consultar: ")
-            result = tree.buscar_proyecto( 'gerente', gerente)
+            result = tree.buscar_proyecto(tree.root, 'gerente', gerente)
         elif opcion == "4":
             fecha_inicio = datetime.strptime(input("Fecha de inicio del proyecto a consultar (YYYY-MM-DD): "), '%Y-%m-%d')
-            result = tree.buscar_proyecto( 'fecha_inicio', fecha_inicio)
+            result = tree.buscar_proyecto(tree.root, 'fecha_inicio', fecha_inicio)
         elif opcion == "5":
-            fecha_vencimiento = datetime.strptime(input("Fecha de vencimiento del proyecto a consultar (YYYY-MM-DD): "), '%Y-%m-%d')
-            result = tree.buscar_proyecto( 'fecha_vencimiento', fecha_vencimiento)
+            fecha_fin = datetime.strptime(input("Fecha de vencimiento del proyecto a consultar (YYYY-MM-DD): "), '%Y-%m-%d')
+            result = tree.buscar_proyecto(tree.root, 'fecha_fin', fecha_fin)
         elif opcion == "6":
             estado_actual = input("Estado actual del proyecto a consultar: ")
-            result = tree.buscar_proyecto('estado_actual', estado_actual)
+            result = tree.buscar_proyecto(tree.root, 'estado_actual', estado_actual)
         elif opcion == "7":
             break
         else:
@@ -236,12 +237,12 @@ def menu(tree):
             nombre = input("Nombre del proyecto: ")
             descripcion = input("Descripción del proyecto: ")
             fecha_inicio = input("Fecha de inicio (YYYY-MM-DD): ")
-            fecha_vencimiento = input("Fecha de vencimiento (YYYY-MM-DD): ")
+            fecha_fin = input("Fecha de vencimiento (YYYY-MM-DD): ")
             estado_actual = input("Estado actual: ")
             empresa = input("Empresa: ")
             gerente = input("Gerente: ")
             equipo = input("Equipo (separado por comas): ").split(", ")
-            proyecto = Proyecto(nombre, descripcion, fecha_inicio, fecha_vencimiento, estado_actual, empresa, gerente, equipo)
+            proyecto = Proyecto(nombre, descripcion, fecha_inicio, fecha_fin, estado_actual, empresa, gerente, equipo)
             tree.insert(proyecto)
             print("Proyecto agregado exitosamente.")
 
@@ -251,7 +252,9 @@ def menu(tree):
         elif opcion == "3":
             print("Lista de proyectos:")
             inorder_elements = tree.inorder_traversal()
-            print(f"Elementos en el árbol en orden: {[str(node) for node in inorder_elements]} \n")
+            print(f"Elementos en el árbol en orden:\n")
+            for i in inorder_elements:
+                print(f"{i} \n")
 
         elif opcion == "4":
             nombre = input("Nombre del proyecto a eliminar: ")
