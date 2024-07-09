@@ -5,6 +5,7 @@ from proyecto import Proyecto as pr
 from subtarea import Subtarea
 import os
 import gestion_proyecto_arbolAVL as gestionProyecto
+from reportes_proyecto2 import NaryTree
 
 def cargar_datos_desde_json():
     proyectos = gestionProyecto.AVLTree()
@@ -19,12 +20,13 @@ def cargar_datos_desde_json():
         datos = json.load(archivo)
         va=0
         for proyecto_data in datos:
+            cont = 1
             proyecto = pr(
                 proyecto_data["nombre"],
                 proyecto_data["descripcion"],
-                datetime.strptime(proyecto_data["fecha_inicio"], "%Y-%m-%d"),
-                datetime.strptime(proyecto_data["fecha_vencimiento"], "%Y-%m-%d"),
-                proyecto_data["estado"],
+                proyecto_data["fecha_inicio"],
+                proyecto_data["fecha_fin"],
+                proyecto_data["estado_actual"],
                 proyecto_data["empresa"],
                 proyecto_data["gerente"],
                 proyecto_data["equipo"]
@@ -33,27 +35,49 @@ def cargar_datos_desde_json():
             
             proyecto.id = proyecto_data["id"]  # Asigna el ID desde los datos cargados
             for i in proyecto_data["tareas"]:
-                
-                proyecto.tareas.insert(Tarea(
-                                       i["nombre"],
-                                       i["descripcion"],
-                                       datetime.strptime(i["fecha_inicio"],"%Y-%m-%d"),
-                                       datetime.strptime(i["fecha_vencimiento"],"%Y-%m-%d"),
-                                       i["estado"],
-                                       i["empresa_cliente"],
-                                       i["porcentaje"],
-                                       ))
-                for j in i["subtareas"]:
-                    if va<len(proyecto_data["tareas"]):
+                if cont == 1:
+                    proyecto.tareas = NaryTree(Tarea(
+                                        i["nombre"],
+                                        i["descripcion"],
+                                        i["fecha_inicio"],
+                                        i["fecha_fin"],
+                                        i["estado"],
+                                        i["empresa_cliente"],
+                                        i["porcentaje"],
+                                        ))
+                    for j in i["subtareas"]:
+                        if va<len(proyecto_data["tareas"]):
 
-                        proyecto.tareas[va].subtareas.insert(
-                            Subtarea(
-                                j["nombre"],
-                                j["descripcion"],
-                                j["estado"]
+                            proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas = NaryTree(
+                                Subtarea(
+                                    j["nombre"],
+                                    j["descripcion"],
+                                    j["estado"]
+                                )
                             )
-                        )
+                else:
+                    proyecto.tareas.add_child_to_node(proyecto.tareas.root, Tarea(
+                                        i["nombre"],
+                                        i["descripcion"],
+                                        i["fecha_inicio"],
+                                        i["fecha_fin"],
+                                        i["estado"],
+                                        i["empresa_cliente"],
+                                        i["porcentaje"],
+                                        ))
+                    for j in i["subtareas"]:
+                        if va<len(proyecto_data["tareas"]):
+
+                            proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.add_child_to_node(
+                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.root,
+                                Subtarea(
+                                    j["nombre"],
+                                    j["descripcion"],
+                                    j["estado"]
+                                )
+                            )
                 va+=1
+                cont+=1
             proyectos.insert(proyecto)
     
     # Cargar subtareas desde subtareas.json

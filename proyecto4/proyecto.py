@@ -16,7 +16,7 @@ class Proyecto:
         self.gerente = gerente
         self.equipo = equipo
         self.sprint= AVLTree()
-        self.tareas=NaryTree()
+        self.tareas=NaryTree(None)
     
     def __str__(self):
         return f"Proyecto(id={self.id}, nombre={self.nombre}, fecha_vencimiento={self.fecha_fin}, estado_actual={self.estado_actual})"

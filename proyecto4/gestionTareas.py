@@ -3,18 +3,18 @@ from reportes_proyecto2 import NaryTree
 class Tarea:
     id_counter = 0
 
-    def __init__(self, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
+    def __init__(self, nombre, descripcion, fecha_inicio, fecha_fin, estado, empresa, porcentaje):
         # Constructor de la clase Tarea
         Tarea.id_counter += 1
         self.id = Tarea.id_counter
         self.nombre = nombre
         self.descripcion = descripcion
         self.fecha_inicio = datetime.strptime(fecha_inicio, '%Y-%m-%d')
-        self.fecha_vencimiento = datetime.strptime(fecha_vencimiento, '%Y-%m-%d')
+        self.fecha_fin = datetime.strptime(fecha_fin, '%Y-%m-%d')
         self.estado = estado
         self.empresa = empresa
         self.porcentaje = porcentaje
-        self.subtareas = NaryTree() # Lista para almacenar subtareas
+        self.subtareas = NaryTree(None) # Lista para almacenar subtareas
     
     def __repr__(self):
         # Representación en forma de cadena de la tarea
@@ -131,7 +131,7 @@ class Proyecto:
                 "nombre": tarea.nombre,
                 "descripcion": tarea.descripcion,
                 "fecha_inicio": tarea.fecha_inicio.strftime('%Y-%m-%d') if tarea.fecha_inicio else None,
-                "fecha_vencimiento": tarea.fecha_vencimiento.strftime('%Y-%m-%d') if tarea.fecha_vencimiento else None,
+                "fecha_fin": tarea.fecha_fin.strftime('%Y-%m-%d') if tarea.fecha_fin else None,
                 "estado": tarea.estado,
                 "empresa": tarea.empresa,
                 "porcentaje": tarea.porcentaje,
@@ -164,7 +164,7 @@ class Proyecto:
                 tarea_dict["nombre"],
                 tarea_dict["descripcion"],
                 datetime.strptime(tarea_dict["fecha_inicio"], '%Y-%m-%d') if tarea_dict["fecha_inicio"] else None,
-                datetime.strptime(tarea_dict["fecha_vencimiento"], '%Y-%m-%d') if tarea_dict["fecha_vencimiento"] else None,
+                datetime.strptime(tarea_dict["fecha_fin"], '%Y-%m-%d') if tarea_dict["fecha_fin"] else None,
                 tarea_dict["estado"],
                 tarea_dict["empresa"],
                 tarea_dict["porcentaje"]
