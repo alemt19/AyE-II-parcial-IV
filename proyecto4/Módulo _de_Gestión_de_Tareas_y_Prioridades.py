@@ -23,7 +23,7 @@ class Tarea:
 
     def eliminar_subtarea(self, id_subtarea):
         # Método para eliminar una subtarea basada en su ID
-        self.subtareas = [subtarea for subarea in self.subtareas if subarea.id != id_subtarea]
+        self.subtareas = [subtarea for subtarea in self.subtareas if subtarea.id != id_subtarea]
 
     def __repr__(self):
         # Representación en forma de cadena de la tarea
