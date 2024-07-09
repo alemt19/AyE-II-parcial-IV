@@ -250,7 +250,7 @@ def menu(tree):
 
         elif opcion == "3":
             print("Lista de proyectos:")
-            inorder_elements = avl.inorder_traversal()
+            inorder_elements = tree.inorder_traversal()
             print(f"Elementos en el árbol en orden: {[str(node) for node in inorder_elements]} \n")
 
         elif opcion == "4":
@@ -268,9 +268,6 @@ def menu(tree):
 
         else:
             print("Opción no válida. Intente de nuevo.")
-
-avl = AVLTree()
-menu(avl)
 
 
 

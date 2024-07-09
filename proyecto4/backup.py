@@ -1,12 +1,13 @@
 import json
 from datetime import datetime
-import tareas as tr
+from gestionTareas import Tarea
 from proyecto import Proyecto as pr
-import subtareas as st
+from subtarea import Subtarea
 import os
+import gestion_proyecto_arbolAVL as gestionProyecto
 
 def cargar_datos_desde_json():
-    proyectos = []
+    proyectos = gestionProyecto.AVLTree()
     config_path = os.path.join("proyecto4", "config.txt")
     # Leer y cargar el archivo de configuración
     with open(config_path, "r") as config_file:
@@ -33,7 +34,7 @@ def cargar_datos_desde_json():
             proyecto.id = proyecto_data["id"]  # Asigna el ID desde los datos cargados
             for i in proyecto_data["tareas"]:
                 
-                proyecto.tareas.append(tr.Tareas(
+                proyecto.tareas.insert(Tarea(
                                        i["nombre"],
                                        i["descripcion"],
                                        datetime.strptime(i["fecha_inicio"],"%Y-%m-%d"),
@@ -45,16 +46,15 @@ def cargar_datos_desde_json():
                 for j in i["subtareas"]:
                     if va<len(proyecto_data["tareas"]):
 
-                        proyecto.tareas[va].subtareas.append(
-                            st.Subtarea(
+                        proyecto.tareas[va].subtareas.insert(
+                            Subtarea(
                                 j["nombre"],
                                 j["descripcion"],
                                 j["estado"]
                             )
                         )
                 va+=1
-                        
-            proyectos.append(proyecto)
+            proyectos.insert(proyecto)
     
     # Cargar subtareas desde subtareas.json
     # Respaldar datos de proyectos a un archivo
