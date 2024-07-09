@@ -1,3 +1,5 @@
+from gestion_proyecto_arbolAVL import AVLTree
+from listaEnlazada import LinkedList
 class Tarea:
     def __init__(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
         self.id = id_tarea
@@ -82,65 +84,6 @@ class Sprint:
     def __repr__(self):
         return f"Sprint(id={self.id}, nombre='{self.nombre}', estado='{self.estado}')"
 
-class NodoAVL:
-    def __init__(self, sprint):
-        self.sprint = sprint
-        self.izquierda = None
-        self.derecha = None
-        self.altura = 1
-
-class ArbolAVL:
-    def __init__(self):
-        self.raiz = None
-
-    def insertar(self, sprint):
-        self.raiz = self._insertar(self.raiz, sprint)
-
-    def _insertar(self, nodo, sprint):
-        if not nodo:
-            return NodoAVL(sprint)
-        if sprint.nombre < nodo.sprint.nombre:
-            nodo.izquierda = self._insertar(nodo.izquierda, sprint)
-        else:
-            nodo.derecha = self._insertar(nodo.derecha, sprint)
-        nodo.altura = 1 + max(self._altura(nodo.izquierda), self._altura(nodo.derecha))
-        balance = self._balance(nodo)
-        if balance > 1 and sprint.nombre < nodo.izquierda.sprint.nombre:
-            return self._rotar_derecha(nodo)
-        if balance < -1 and sprint.nombre > nodo.derecha.sprint.nombre:
-            return self._rotar_izquierda(nodo)
-        if balance > 1 and sprint.nombre > nodo.izquierda.sprint.nombre:
-            nodo.izquierda = self._rotar_izquierda(nodo.izquierda)
-            return self._rotar_derecha(nodo)
-        if balance < -1 and sprint.nombre < nodo.derecha.sprint.nombre:
-            nodo.derecha = self._rotar_derecha(nodo.derecha)
-            return self._rotar_izquierda(nodo)
-        return nodo
-
-    def _altura(self, nodo):
-        return nodo.altura if nodo else 0
-
-    def _balance(self, nodo):
-        return self._altura(nodo.izquierda) - self._altura(nodo.derecha)
-
-    def _rotar_izquierda(self, z):
-        y = z.derecha
-        T3 = y.izquierda
-        y.izquierda = z
-        z.derecha = T3
-        z.altura = 1 + max(self._altura(z.izquierda), self._altura(z.derecha))
-        y.altura = 1 + max(self._altura(y.izquierda), self._altura(y.derecha))
-        return y
-
-    def _rotar_derecha(self, z):
-        y = z.izquierda
-        T2 = y.derecha
-        y.derecha = z
-        z.izquierda = T2
-        z.altura = 1 + max(self._altura(z.izquierda), self._altura(z.derecha))
-        y.altura = 1 + max(self._altura(y.izquierda), self._altura(y.derecha))
-        return y
-
     def serializar(self):
         return self._serializar(self.raiz)
 
@@ -166,8 +109,8 @@ class ArbolAVL:
     @staticmethod
     def deserializar(sprints_json):
         if not sprints_json:
-            return ArbolAVL()
-        arbol = ArbolAVL()
+            return AVLTree()
+        arbol = AVLTree()
         for sprint_dict in sprints_json:
             sprint = Sprint(
                 sprint_dict["nombre"],

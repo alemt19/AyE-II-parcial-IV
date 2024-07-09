@@ -150,19 +150,21 @@ class AVLTree:
             return self.root
         elif criteria == 'nombre' and self.root.key.nombre == value:
             return self.root
-        elif criteria == 'gerente' and self.root.key.idgerente == value:
+        elif criteria == 'gerente' and self.root.key.gerente == value:
             return self.root
-        elif criteria == 'fecha_inicio' and self.root.key.idfecha_inicio == value:
+        elif criteria == 'fecha_inicio' and self.root.key.fecha_inicio == value:
             return self.root
-        elif criteria == 'fecha_vencimiento' and self.root.key.idfecha_vencimiento == value:
+        elif criteria == 'fecha_vencimiento' and self.root.key.fecha_vencimiento == value:
             return self.root
-        elif criteria == 'estado_actual' and self.root.key.idestado_actual == value:
+        elif criteria == 'estado_actual' and self.root.key.estado_actual == value:
             return self.root
         
         left_search = self.buscar_proyecto(self.root.left, criteria, value)
         if left_search:
             return left_search
         return self.buscar_proyecto(self.root.right, criteria, value)
+    
+    
     def inorder_traversal(self):
         nodes = []
         self._inorder_traversal(self.root, nodes)

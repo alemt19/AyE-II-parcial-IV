@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
-
+from reportes_proyecto2 import NaryTree
+from listaEnlazada import LinkedList
 class Tarea:
     id_counter = 0
 
@@ -10,25 +11,70 @@ class Tarea:
         self.id = Tarea.id_counter
         self.nombre = nombre
         self.descripcion = descripcion
-        self.fecha_inicio = fecha_inicio
-        self.fecha_vencimiento = fecha_vencimiento
+        self.fecha_inicio = datetime.strptime(fecha_inicio, '%Y-%m-%d')
+        self.fecha_vencimiento = datetime.strptime(fecha_vencimiento, '%Y-%m-%d')
         self.estado = estado
         self.empresa = empresa
         self.porcentaje = porcentaje
-        self.subtareas = []  # Lista para almacenar subtareas
-
-    def agregar_subtarea(self, subtarea):
-        # Método para agregar una subtarea a la tarea
-        self.subtareas.append(subtarea)
-
-    def eliminar_subtarea(self, id_subtarea):
-        # Método para eliminar una subtarea basada en su ID
-        self.subtareas = [subtarea for subtarea in self.subtareas if subtarea.id != id_subtarea]
-
+        self.subtareas =  NaryTree() # Lista para almacenar subtareas
+    
     def __repr__(self):
         # Representación en forma de cadena de la tarea
         return f"Tarea(id={self.id}, nombre='{self.nombre}', estado='{self.estado}')"
+    
+def menu(tree):
+    while True:
+        print("\n--- Menú de Gestión de Tareas ---")
+        print("1. Agregar tarea")
+        print("2. Consultar tarea")
+        print("3. Modificar tarea")
+        print("4. Listar tareas")
+        print("5. Eliminar tarea")
+        print("6. Mostrar tareas por nivel")
+        print("7. Mostrar árbol de tareas")
+        print("8. Salir")
 
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            name = input("Nombre de la tarea: ")
+            description = input("Descripción: ")
+            start_date = str(input("Fecha de inicio: "))
+            due_date = str(input("Fecha de vencimiento: "))
+            status = input("Estado actual: ")
+            empresa=input("Estado actual: ")
+            progress = input("Porcentaje completado: ")
+            tarea=Tarea(name,description,start_date,due_date,status,empresa,progress)
+            tree.insert(tarea)
+            
+        elif opcion == "2":
+            tarea=str(input("ingrese el nombre de la tarea a consultar: "))
+            tarea_encontrada=tree.tareas.find_node_by_attribute('nombre',tarea)
+            if tarea_encontrada is None:
+                print("no se encontro el proyecto")
+            else:
+                print(tarea_encontrada)
+        elif opcion == "3":
+            tarea=str(input("ingrese el nombre de la tarea a eliminar: "))
+            a=tree.tareas.delete_node_by_atribute('nombre',tarea)
+            if a:
+                print("eliminado exitosamente")
+            else:
+                print("no se pudo eliminar")
+
+        elif opcion == "4":
+            listar_tareas(tree)
+        elif opcion == "5":
+            eliminar_tarea(tree)
+        elif opcion == "6":
+            mostrar_tareas_por_nivel(tree)
+        elif opcion == "7":
+            mostrar_arbol_tareas(tree)
+        elif opcion == "8":
+            break
+        else:
+            print("Opción no válida, por favor intente de nuevo.")
+"""
 class Proyecto:
     def __init__(self, nombre):
         # Constructor de la clase Proyecto
@@ -167,4 +213,4 @@ class Proyecto:
     def eliminar_subtarea_de_todas_las_tareas(self, id_subtarea):
         # Método para eliminar una subtarea de todas las tareas del proyecto
         for tarea in self.tareas:
-            tarea.eliminar_subtarea(id_subtarea)
+            tarea.eliminar_subtarea(id_subtarea)"""
