@@ -1,5 +1,4 @@
 import gestion_proyecto_arbolAVL as gestionProyectos
-from gestionEmpresas import ListaEnlazada
 import gestionEmpresas
 import gestionTareas
 from backup import cargar_datos_desde_json

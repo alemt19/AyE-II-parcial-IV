@@ -99,30 +99,25 @@ class ListaEnlazada:
         return valor
 
 def crear_empresa(empresas):
-    nombre = input("Ingrese el nombre: ")
-    descripcion = input("Ingrese la descripción: ")
-    creacion = input("Ingrese la fecha de creación en formato YYYY-MM-DD: ")
-    fecha = datetime.strptime(creacion, "%Y-%m-%d")
-    direccion = input("Ingrese la dirección: ")
-    telefono = input("Ingrese el telefono: ")
-    correo = input("Ingrese el correo: ")
-    gerente = input("Ingrese el nombre del gerente: ")
-    contacto = input("Ingrese el contacto: ")
+    try:
+        nombre = input("Ingrese el nombre: ")
+        descripcion = input("Ingrese la descripción: ")
+        creacion = input("Ingrese la fecha de creación en formato YYYY-MM-DD: ")
+        direccion = input("Ingrese la dirección: ")
+        telefono = input("Ingrese el telefono: ")
+        correo = input("Ingrese el correo: ")
+        gerente = input("Ingrese el nombre del gerente: ")
+        contacto = input("Ingrese el contacto: ")
 
-    if(
-        type(nombre) == str and
-        type(descripcion) == str and
-        isinstance(fecha, datetime.datetime) and
-        type(direccion) == str and
-        type(telefono) == str and
-        type(correo) == str and
-        type(gerente) == str and
-        type(contacto) == str
-    ):
-        empresas.agregar(Empresa(nombre, descripcion, creacion, direccion, telefono, correo, gerente, contacto)) 
-        print("Empresa agregada correctamente.")      
-    else:
-        print("Error al procesar los datos de la nueva empresa")
+        if(
+            len(creacion.split("-")) == 3
+        ):
+            empresas.agregar(Empresa(nombre, descripcion, creacion, direccion, telefono, correo, gerente, contacto)) 
+            print("Empresa agregada correctamente.")      
+        else:
+            print("Fecha invalida")
+    except Exception as e:
+        print("Se han ingresado datos no válidos, intente nuevamente.", e)
 
 def modificar_empresa(empresas):
     i = int(input("Ingrese el id de la empresa que desea modificar"))
@@ -165,7 +160,7 @@ def modificar_empresa(empresas):
 
 def eliminar_empresa(empresas):
     i = int(input("Ingrese el ID de la empresa que desea eliminar: "))
-    empresa = empresas.obtener(i)
+    empresa = empresas.obtener(i-1)
     if (empresas.eliminar(empresa)):
         print("Empresa eliminada exitosamente")
     else:

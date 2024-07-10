@@ -96,7 +96,6 @@ def cargar_datos_desde_csv(proyectosJSON):
         reader = csv.reader(file)
         for row in reader:
             if not row[1] == "nombre":
-                print(row[3])
                 empresa = Empresa(
                     row[1],
                     row[2],
