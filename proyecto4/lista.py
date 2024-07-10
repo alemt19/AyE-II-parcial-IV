@@ -86,4 +86,3 @@ class ListaEnlazada:
         actual.siguiente = actual.siguiente.siguiente
         self.longitud -= 1
         return valor
-
