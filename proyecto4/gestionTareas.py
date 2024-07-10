@@ -40,18 +40,18 @@ def menu(tree):
             start_date = str(input("Fecha de inicio: "))
             due_date = str(input("Fecha de vencimiento: "))
             status = input("Estado actual: ")
-            empresa=input("Estado actual: ")
+            empresa=input("Empresa: ")
             progress = input("Porcentaje completado: ")
             tarea=Tarea(name,description,start_date,due_date,status,empresa,progress)
-            tree.insert(tarea)
+            tree.add_child_to_node(tree.root, tarea)
             
         elif opcion == "2":
             tarea=str(input("ingrese el nombre de la tarea a consultar: "))
-            tarea_encontrada=tree.tareas.find_node_by_attribute('nombre',tarea)
+            tarea_encontrada=tree.find_node_by_attribute('nombre',tarea)
             if tarea_encontrada is None:
                 print("no se encontro el proyecto")
             else:
-                print(tarea_encontrada)
+                print(tarea_encontrada.data)
         elif opcion == "3":
             tarea=str(input("ingrese el nombre de la tarea a eliminar: "))
             a=tree.tareas.delete_node_by_atribute('nombre',tarea)

@@ -120,7 +120,7 @@ def crear_empresa(empresas):
         print("Se han ingresado datos no válidos, intente nuevamente.", e)
 
 def modificar_empresa(empresas):
-    i = int(input("Ingrese el id de la empresa que desea modificar"))
+    i = int(input("Ingrese el id de la empresa que desea modificar: "))
     empresa = empresas.obtener(i)
     print("1. Cambiar nombre")
     print("2. Cambiar descripción")
@@ -130,7 +130,7 @@ def modificar_empresa(empresas):
     print("6. Cambiar teléfono")
     print("7. Cambiar nombre del gerente")
     print("8. Cambiar contacto")
-    x = input("Ingrese el número del atributo a cambiar")
+    x = input("Ingrese el número del atributo a cambiar: ")
 
     if x == "1":
         empresa.nombre = input("Ingrese el nuevo nombre: ")

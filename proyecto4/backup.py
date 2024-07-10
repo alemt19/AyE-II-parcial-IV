@@ -111,6 +111,49 @@ def cargar_datos_desde_csv(proyectosJSON):
 
                 for i in proyectosAsociados:
                     empresa.proyectos.insert(proyectosJSON.buscar_proyecto(proyectosJSON.root, "nombre", i))
-
                 empresas.agregar(empresa)
     return empresas
+
+"""
+def guardar_datos_en_json(proyectos):
+    data = []
+    for proyecto in proyectos:
+        proyecto_data = {
+            "id": proyecto.id,
+            "nombre": proyecto.nombre,
+            "descripcion": proyecto.descripcion,
+            "fecha_inicio": proyecto.fecha_inicio.strftime("%Y-%m-%d"),
+            "fecha_vencimiento": proyecto.fecha_fin.strftime("%Y-%m-%d"),
+            "estado": proyecto.estado,
+            "empresa": proyecto.empresa,
+            "gerente": proyecto.gerente,
+            "equipo": proyecto.equipo,
+            "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
+        }
+        for tarea in proyecto.tareas:
+            tarea_data = {
+                "id": tarea.id,
+                "nombre": tarea.nombre,
+                "descripcion": tarea.descripcion,
+                "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
+                "fecha_vencimiento": tarea.fecha_fin.strftime("%Y-%m-%d"),
+                "estado": tarea.estado,
+                "empresa_cliente": tarea.empresa,
+                "porcentaje": tarea.porcentaje,
+                "subtareas" : []
+                # Agregar otros atributos de tarea según sea necesario
+            }
+            for subtarea in tarea.subtareas:
+                subtarea_data = {
+                    "id": subtarea.id,
+                    "nombre": subtarea.nombre,
+                    "descripcion": subtarea.descripcion,
+                    "estado": subtarea.estado,
+                }
+                tarea_data["subtareas"].append(subtarea_data)
+            proyecto_data["tareas"].append(tarea_data)
+        data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
+
+    with open("proyecto4\datos.json", 'w') as file:
+        json.dump(data, file, indent=4)  # Escribimos los datos en el archivo JSON con formato indentado
+"""
