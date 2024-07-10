@@ -28,7 +28,7 @@ def cargar_datos_desde_json():
                 proyecto_data["descripcion"],
                 proyecto_data["fecha_inicio"],
                 proyecto_data["fecha_fin"],
-                proyecto_data["estado_actual"],
+                proyecto_data["estado"],
                 proyecto_data["empresa"],
                 proyecto_data["gerente"],
                 proyecto_data["equipo"]
@@ -118,18 +118,18 @@ def guardar_datos_en_json(proyectos):
     data = []
     for proyecto in proyectos:
         proyecto_data = {
-            "id": proyecto.id,
-            "nombre": proyecto.nombre,
-            "descripcion": proyecto.descripcion,
-            "fecha_inicio": proyecto.fecha_inicio.strftime("%Y-%m-%d"),
-            "fecha_fin": proyecto.fecha_fin.strftime("%Y-%m-%d"),
-            "estado": proyecto.estado,
-            "empresa": proyecto.empresa,
-            "gerente": proyecto.gerente,
-            "equipo": proyecto.equipo,
+            "id": proyecto.key.id,
+            "nombre": proyecto.key.nombre,
+            "descripcion": proyecto.key.descripcion,
+            "fecha_inicio": proyecto.key.fecha_inicio.strftime("%Y-%m-%d"),
+            "fecha_fin": proyecto.key.fecha_fin.strftime("%Y-%m-%d"),
+            "estado": proyecto.key.estado_actual,
+            "empresa": proyecto.key.empresa,
+            "gerente": proyecto.key.gerente,
+            "equipo": proyecto.key.equipo,
             "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
         }
-        tareas = proyecto.tareas.inorder_traversal(proyecto.tareas.root)
+        tareas = proyecto.key.tareas.inorder_traversal(proyecto.key.tareas.root)
         for tarea in tareas:
             tarea_data = {
                 "id": tarea.id,
@@ -143,9 +143,10 @@ def guardar_datos_en_json(proyectos):
                 "subtareas" : []
                 # Agregar otros atributos de tarea según sea necesario
             }
-            subtareas = tarea.subtarea.inorder_traversal(tarea.subtareas.root)
-            for subtarea in subtareas:
-                subtarea_data = {
+            subtareas = tarea.subtareas.inorder_traversal(tarea.subtareas.root)
+            if subtareas[0] is not None:
+                for subtarea in subtareas:
+                    subtarea_data = {
                     "id": subtarea.id,
                     "nombre": subtarea.nombre,
                     "descripcion": subtarea.descripcion,
@@ -153,6 +154,7 @@ def guardar_datos_en_json(proyectos):
                 }
                 tarea_data["subtareas"].append(subtarea_data)
             proyecto_data["tareas"].append(tarea_data)
+                
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
 
     with open("proyecto4\datos.json", 'w') as file:

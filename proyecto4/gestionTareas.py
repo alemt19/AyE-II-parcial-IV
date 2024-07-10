@@ -25,9 +25,9 @@ def menu(tree):
         print("\n--- Menú de Gestión de Tareas ---")
         print("1. Agregar tarea")
         print("2. Consultar tarea")
-        print("3. Modificar tarea")
+        print("3. eliminar tarea")
         print("4. Listar tareas")
-        print("5. Eliminar tarea")
+        print("5. modificar tarea")
         print("6. Mostrar tareas por nivel")
         print("7. Mostrar árbol de tareas")
         print("8. Salir")
@@ -54,20 +54,39 @@ def menu(tree):
                 print(tarea_encontrada.data)
         elif opcion == "3":
             tarea=str(input("ingrese el nombre de la tarea a eliminar: "))
-            a=tree.tareas.delete_node_by_atribute('nombre',tarea)
+            a=tree.delete_node_by_attribute('nombre',tarea)
             if a:
                 print("eliminado exitosamente")
             else:
                 print("no se pudo eliminar")
 
         elif opcion == "4":
-            listar_tareas(tree)
+            resultado= tree.inorder_traversal(tree.root)
+            for i in resultado:
+                print("-",i,'\n')
         elif opcion == "5":
-            eliminar_tarea(tree)
+            starea=str(input("ingrese el nombre de la tarea a modificar: "))
+            tarea_encontrada=tree.find_node_by_attribute('nombre',starea)
+            if tarea_encontrada is None:
+                print("no se encontro el proyecto")
+            else:
+                name = input("Nombre de la tarea: ")
+                description = input("Descripción: ")
+                start_date = str(input("Fecha de inicio: "))
+                due_date = str(input("Fecha de vencimiento: "))
+                status = input("Estado actual: ")
+                empresa=input("Empresa: ")
+                progress = input("Porcentaje completado: ")
+                tarea=Tarea(name,description,start_date,due_date,status,empresa,progress)
+                tree.modify_node_by_attribute('nombre',starea,tarea)
+                print("tarea actualizada correctamente")
+                
         elif opcion == "6":
-            mostrar_tareas_por_nivel(tree)
+            nivel= int(input("ingrese el nivel: "))
+            for i in tree.get_elements_at_level(nivel):
+                print(i)
         elif opcion == "7":
-            mostrar_arbol_tareas(tree)
+            tree.display_tree(tree.root)
         elif opcion == "8":
             break
         else:

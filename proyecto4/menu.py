@@ -18,7 +18,7 @@ def menuPrincipal():
         print("4. Gestión de sprints")
         print("5. Reportes")
         print("6. Salir")
-        opcion = input("Seleccione una opción: ")
+        opcion = str(input("Seleccione una opción: "))
 
         if opcion == "1":
             while True:
@@ -30,7 +30,7 @@ def menuPrincipal():
                 print("4. Eliminar empresa por nombre")
                 print("5. Modificar empresa")
                 print("6. Salir")
-                opcion = input("Seleccione una opción: ")
+                opcion = str(input("Seleccione una opción: "))
                 
                 if opcion == "1":
                     gestionEmpresas.crear_empresa(empresas)
@@ -46,7 +46,7 @@ def menuPrincipal():
                     print("Saliendo del programa.")
                     break
                 else:
-                    print("Opción no válida. Intente de nuevo.")
+                    print("Opción no válida. Intente de nuevosfsd.")
 
         elif opcion == "2":
             # Menú de proyectos
@@ -59,18 +59,20 @@ def menuPrincipal():
             proyectos = tree #Provisional para probar, deberían ser los proyectos de una empresa
             nombre = input("Ingrese el nombre del proyecto del cual quiere gestionar sus tareas: ")
             proyecto = proyectos.buscar_proyecto(proyectos.root, 'nombre', nombre)
-            
-            gestionTareas.menu(proyecto.key.tareas)
+            if proyecto is None:
+                print("no se encontro el proyecto")
+            else:
+                gestionTareas.menu(proyecto.key.tareas)
 
         elif opcion == "6":
             print("Saliendo del programa.")
             break
         else:
-            print("Opción no válida. Intente de nuevo.")
+            print("Opción no válida. Intente de nuevofsf.")
     
     proyectosTotales = []
     for i in range(0, empresas.longitud):
-        proyectos = empresas.obtener(i).inorder_traversal()
+        proyectos = empresas.obtener(i).proyectos.inorder_traversal()
         for j in proyectos:
             proyectosTotales.append(j)
     

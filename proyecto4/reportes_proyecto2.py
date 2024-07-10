@@ -49,6 +49,20 @@ class NaryTree:
             if parent:
                 return parent
         return None
+    
+    def modify_node_by_attribute(self, attribute, value, new_data):
+        node_to_modify = self.find_node_by_attribute(attribute, value)
+        if node_to_modify:
+            node_to_modify.data.id = new_data.id
+            node_to_modify.data.nombre = new_data.nombre
+            node_to_modify.data.descripcion = new_data.descripcion
+            node_to_modify.data.fecha_inicio = new_data.fecha_inicio
+            node_to_modify.data.fecha_vencimiento = new_data.fecha_fin
+            node_to_modify.data.estado = new_data.estado
+            node_to_modify.data.empresa = new_data.empresa
+            node_to_modify.data.porcentaje = new_data.porcentaje
+            return True
+        return False
 
     def delete_node(self, target_node):
         if self.root == target_node:
@@ -114,8 +128,13 @@ class NaryTree:
     def delete_node_by_attribute(self, attribute, value):
         node_to_delete = self.find_node_by_attribute(attribute, value)
         if node_to_delete:
-            self.delete_node(node_to_delete)
-            return True
+            if self.root == node_to_delete:
+                self.root = None
+            else:
+                parent_node = self.find_parent(self.root, node_to_delete)
+                if parent_node:
+                    parent_node.remove_child(node_to_delete)
+                    return True
         return False
     
     def inorder_traversal(self, node):

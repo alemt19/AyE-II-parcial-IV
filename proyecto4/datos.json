@@ -5,25 +5,36 @@
         "descripcion": "Descripci\u00c3\u00b3n del proyecto 1",
         "fecha_inicio": "2024-07-01",
         "fecha_fin": "2024-07-31",
-        "estado_actual": "En progreso",
+        "estado": "En progreso",
         "empresa": "Empresa A",
         "gerente": "Gerente A",
         "equipo": "Equipo A",
         "tareas": [
             {
+                "id": 2,
+                "nombre": "sddsfs",
+                "descripcion": "ddsfsdf",
+                "fecha_inicio": "2024-12-12",
+                "fecha_fin": "2024-12-12",
+                "estado": "dsfsds",
+                "empresa_cliente": "sfsd",
+                "porcentaje": "3",
+                "subtareas": []
+            },
+            {
                 "id": 1,
-                "nombre": "Tarea 1",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 1",
-                "fecha_inicio": "2024-07-01",
-                "fecha_fin": "2024-07-31",
-                "estado": "En progreso",
-                "empresa_cliente": "Empresa A",
-                "porcentaje": 75,
+                "nombre": "sddsfs",
+                "descripcion": "ddsfsdf",
+                "fecha_inicio": "2024-12-12",
+                "fecha_fin": "2024-12-12",
+                "estado": "dsfsds",
+                "empresa_cliente": "sfsd",
+                "porcentaje": "3",
                 "subtareas": [
                     {
                         "id": 1,
-                        "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
+                        "nombre": "Subtarea 2",
+                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
                     }
                 ]
@@ -36,13 +47,13 @@
         "descripcion": "Descripci\u00c3\u00b3n del proyecto 2",
         "fecha_inicio": "2024-08-01",
         "fecha_fin": "2024-08-31",
-        "estado_actual": "Planeado",
+        "estado": "Planeado",
         "empresa": "Empresa B",
         "gerente": "Gerente B",
         "equipo": "Equipo B",
         "tareas": [
             {
-                "id": 2,
+                "id": 3,
                 "nombre": "Tarea 2",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 2",
                 "fecha_inicio": "2024-08-01",
@@ -52,7 +63,7 @@
                 "porcentaje": 0,
                 "subtareas": [
                     {
-                        "id": 2,
+                        "id": 3,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -67,13 +78,13 @@
         "descripcion": "Descripci\u00c3\u00b3n del proyecto 3",
         "fecha_inicio": "2024-09-01",
         "fecha_fin": "2024-09-30",
-        "estado_actual": "Completado",
+        "estado": "Completado",
         "empresa": "Empresa C",
         "gerente": "Gerente C",
         "equipo": "Equipo C",
         "tareas": [
             {
-                "id": 3,
+                "id": 4,
                 "nombre": "Tarea 3",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 3",
                 "fecha_inicio": "2024-09-01",
@@ -83,7 +94,7 @@
                 "porcentaje": 100,
                 "subtareas": [
                     {
-                        "id": 3,
+                        "id": 4,
                         "nombre": "Subtarea 3",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
                         "estado": "Completado"
