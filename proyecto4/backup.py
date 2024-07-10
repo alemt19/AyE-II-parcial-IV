@@ -114,7 +114,6 @@ def cargar_datos_desde_csv(proyectosJSON):
                 empresas.agregar(empresa)
     return empresas
 
-"""
 def guardar_datos_en_json(proyectos):
     data = []
     for proyecto in proyectos:
@@ -123,27 +122,29 @@ def guardar_datos_en_json(proyectos):
             "nombre": proyecto.nombre,
             "descripcion": proyecto.descripcion,
             "fecha_inicio": proyecto.fecha_inicio.strftime("%Y-%m-%d"),
-            "fecha_vencimiento": proyecto.fecha_fin.strftime("%Y-%m-%d"),
+            "fecha_fin": proyecto.fecha_fin.strftime("%Y-%m-%d"),
             "estado": proyecto.estado,
             "empresa": proyecto.empresa,
             "gerente": proyecto.gerente,
             "equipo": proyecto.equipo,
             "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
         }
-        for tarea in proyecto.tareas:
+        tareas = proyecto.tareas.inorder_traversal(proyecto.tareas.root)
+        for tarea in tareas:
             tarea_data = {
                 "id": tarea.id,
                 "nombre": tarea.nombre,
                 "descripcion": tarea.descripcion,
                 "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
-                "fecha_vencimiento": tarea.fecha_fin.strftime("%Y-%m-%d"),
+                "fecha_fin": tarea.fecha_fin.strftime("%Y-%m-%d"),
                 "estado": tarea.estado,
                 "empresa_cliente": tarea.empresa,
                 "porcentaje": tarea.porcentaje,
                 "subtareas" : []
                 # Agregar otros atributos de tarea según sea necesario
             }
-            for subtarea in tarea.subtareas:
+            subtareas = tarea.subtarea.inorder_traversal(tarea.subtareas.root)
+            for subtarea in subtareas:
                 subtarea_data = {
                     "id": subtarea.id,
                     "nombre": subtarea.nombre,
@@ -156,4 +157,3 @@ def guardar_datos_en_json(proyectos):
 
     with open("proyecto4\datos.json", 'w') as file:
         json.dump(data, file, indent=4)  # Escribimos los datos en el archivo JSON con formato indentado
-"""

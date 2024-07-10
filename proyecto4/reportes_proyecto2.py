@@ -118,6 +118,17 @@ class NaryTree:
             return True
         return False
     
+    def inorder_traversal(self, node):
+        result = []
+        self._inorder_traversal_recursive(node, result)
+        return result
+
+    def _inorder_traversal_recursive(self, node, result):
+        if node:
+            for child in node.children:
+                self._inorder_traversal_recursive(child, result)
+            result.append(node.data)
+    
 def reportess(arbolProyecto):
     print("1. recorrer en postorden tareas de un proyecto")
     print("2. listar sprites de un proyecto")
