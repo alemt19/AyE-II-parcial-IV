@@ -47,16 +47,27 @@ def cargar_datos_desde_json():
                                         i["empresa_cliente"],
                                         i["porcentaje"],
                                         ))
+                    cont2 = 1
                     for j in i["subtareas"]:
-                        if va<len(proyecto_data["tareas"]):
-
-                            proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas = NaryTree(
-                                Subtarea(
-                                    j["nombre"],
-                                    j["descripcion"],
-                                    j["estado"]
+                        if cont2 == 1:
+                            if va<len(proyecto_data["tareas"]):
+                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas = NaryTree(
+                                    Subtarea(
+                                        j["nombre"],
+                                        j["descripcion"],
+                                        j["estado"]
+                                    )
                                 )
-                            )
+                        else:
+                            if va<len(proyecto_data["tareas"]):
+                                subtarea = Subtarea(
+                                        j["nombre"],
+                                        j["descripcion"],
+                                        j["estado"]
+                                    )
+                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.add_child_to_node(proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.root, subtarea)
+                        cont2+=1
+
                 else:
                     proyecto.tareas.add_child_to_node(proyecto.tareas.root, Tarea(
                                         i["nombre"],
@@ -68,16 +79,25 @@ def cargar_datos_desde_json():
                                         i["porcentaje"],
                                         ))
                     for j in i["subtareas"]:
-                        if va<len(proyecto_data["tareas"]):
-
-                            proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.add_child_to_node(
-                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.root,
-                                Subtarea(
-                                    j["nombre"],
-                                    j["descripcion"],
-                                    j["estado"]
+                        if cont2 == 1:
+                            if va<len(proyecto_data["tareas"]):
+                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas = NaryTree(
+                                    Subtarea(
+                                        j["nombre"],
+                                        j["descripcion"],
+                                        j["estado"]
+                                    )
                                 )
-                            )
+                        else:
+                            if va<len(proyecto_data["tareas"]):
+                                subtarea = Subtarea(
+                                        j["nombre"],
+                                        j["descripcion"],
+                                        j["estado"]
+                                    )
+                                proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.add_child_to_node(proyecto.tareas.find_node_by_attribute("nombre", i["nombre"]).data.subtareas.root, subtarea)
+                                
+                        cont2+=1
                 va+=1
                 cont+=1
             proyectos.insert2(proyecto)
@@ -159,8 +179,9 @@ def guardar_datos_en_json(proyectos):
                             "nombre": subtarea.nombre,
                             "descripcion": subtarea.descripcion,
                             "estado": subtarea.estado,
-                        }
-                        tarea_data["subtareas"].append(subtarea_data)
+                            }
+                            print(subtarea)
+                            tarea_data["subtareas"].append(subtarea_data)
                 proyecto_data["tareas"].append(tarea_data)
                 
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista

@@ -1,5 +1,6 @@
 from datetime import datetime
 from reportes_proyecto2 import NaryTree
+from subtarea import Subtarea
 class Tarea:
     id_counter = 0
 
@@ -30,7 +31,8 @@ def menu(tree):
         print("5. modificar tarea")
         print("6. Mostrar tareas por nivel")
         print("7. Mostrar árbol de tareas")
-        print("8. Salir")
+        print("8. Gestionar subtareas")
+        print("9. Salir")
 
         opcion = input("Seleccione una opción: ")
 
@@ -49,7 +51,7 @@ def menu(tree):
             tarea=str(input("ingrese el nombre de la tarea a consultar: "))
             tarea_encontrada=tree.find_node_by_attribute('nombre',tarea)
             if tarea_encontrada is None:
-                print("no se encontro el proyecto")
+                print("no se encontro la tarea")
             else:
                 print(tarea_encontrada.data)
         elif opcion == "3":
@@ -79,6 +81,75 @@ def menu(tree):
                 tarea.id = tree.find_node_by_attribute("nombre", starea).data.id
                 tree.modify_node_by_attribute('nombre',starea,tarea)
                 print("tarea actualizada correctamente")
+                
+        elif opcion == "6":
+            nivel= int(input("ingrese el nivel: "))
+            for i in tree.get_elements_at_level(nivel):
+                print(i)
+        elif opcion == "7":
+            tree.display_tree(tree.root)
+        elif opcion == "8":
+            tarea=str(input("ingrese el nombre de la tarea de la cual desea gestionar sus subtareas: "))
+            tarea_encontrada=tree.find_node_by_attribute('nombre',tarea)
+            if tarea_encontrada:
+                menuSubtareas(tarea_encontrada.data.subtareas)
+            else:
+                print("No se ha encontrado la tarea")
+        elif opcion == "9":
+            break
+        else:
+            print("Opción no válida, por favor intente de nuevo.")
+
+def menuSubtareas(tree):
+     while True:
+        print("\n--- Menú de Gestión de Tareas ---")
+        print("1. Agregar subtarea")
+        print("2. Consultar subtarea")
+        print("3. eliminar subtarea")
+        print("4. Listar subtareas")
+        print("5. modificar subtarea")
+        print("6. Mostrar subtareas por nivel")
+        print("7. Mostrar árbol de subtareas")
+        print("8. Salir")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+                name = input("Nombre de la subtarea: ")
+                description = input("Descripción: ")
+                status = input("Estado actual: ")
+                subtarea=Subtarea(name,description,status)
+                tree.add_child_to_node(tree.root, subtarea)
+        elif opcion == "2":
+            subtarea=str(input("ingrese el nombre de la subtarea a consultar: "))
+            subtarea_encontrada=tree.find_node_by_attribute('nombre',subtarea)
+            print(subtarea_encontrada.__class__.__name__)
+            if subtarea_encontrada:
+                print("no se encontro la subtarea")
+            else:
+                print(subtarea_encontrada.data)
+        elif opcion == "3":
+            subtarea=input("ingrese el nombre de la subtarea a eliminar: ")
+            t=tree.find_node_by_attribute('nombre', subtarea)
+            a = tree.delete_node(t)
+            print("eliminado exitosamente")
+
+        elif opcion == "4":
+            resultado= tree.inorder_traversal(tree.root)
+            for i in resultado:
+                print("-",i,'\n')
+        elif opcion == "5":
+            starea=str(input("ingrese el nombre de la subtarea a modificar: "))
+            tarea_encontrada=tree.find_node_by_attribute('nombre',starea)
+            if tarea_encontrada is None:
+                print("no se encontro la subtarea")
+            else:
+                name = input("Nombre de la subtarea: ")
+                description = input("Descripción: ")
+                status = input("Estado actual: ")
+                tarea=Tarea(name,description,status)
+                tarea.id = tree.find_node_by_attribute("nombre", starea).data.id
+                tree.modify_node_by_attribute('nombre',starea,tarea)
+                print("subtarea actualizada correctamente")
                 
         elif opcion == "6":
             nivel= int(input("ingrese el nivel: "))

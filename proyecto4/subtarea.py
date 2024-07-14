@@ -9,4 +9,4 @@ class Subtarea:
     
     def __repr__(self):
         # Representación en forma de cadena de la subtarea
-        return f"Tarea(id={self.id}, nombre='{self.nombre}', descripción='{self.descripcion}', estado='{self.estado}')"
+        return f"Subtarea(id={self.id}, nombre='{self.nombre}', descripción='{self.descripcion}', estado='{self.estado}')"
