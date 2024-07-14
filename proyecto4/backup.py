@@ -165,3 +165,25 @@ def guardar_datos_en_json(proyectos):
 
     with open("proyecto4\datos.json", 'w') as file:
         json.dump(data, file, indent=4)  # Escribimos los datos en el archivo JSON con formato indentado
+
+def guardar_datos_en_csv(empresas):
+    data = [["id", "nombre", "descripcion", "f_creacion", "direccion", "telefono", "correo", "gerente", "equipo_contacto", "proyectos"]]
+    for empresa in empresas:
+        nombresProyectos = []
+        datos = [
+            empresa.id,
+            empresa.nombre,
+            empresa.descripcion,
+            empresa.f_creacion.strftime("%Y-%m-%d"),
+            empresa.direccion,
+            empresa.telefono,
+            empresa.correo,
+            empresa.gerente,
+            empresa.equipo_contacto]
+        for proyectoNodo in empresa.proyectos.inorder_traversal():
+            nombresProyectos.append(proyectoNodo.key.nombre)
+        datos.append("-".join(nombresProyectos))
+        data.append(datos)
+    with open("proyecto4\datosEmpresas.csv", 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(data)

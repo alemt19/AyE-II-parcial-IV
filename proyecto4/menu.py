@@ -4,6 +4,7 @@ import gestionTareas
 from backup import cargar_datos_desde_json
 from backup import cargar_datos_desde_csv
 from backup import guardar_datos_en_json
+from backup import guardar_datos_en_csv
 
 def menuPrincipal():
     tree = cargar_datos_desde_json()
@@ -69,13 +70,13 @@ def menuPrincipal():
             print("Saliendo del programa.")
             break
         else:
-            print("Opción no válida. Intente de nuevofsf.")
+            print("Opción no válida. Intente de nuevo.")
     
     proyectosTotales = []
     for i in range(0, empresas.longitud):
         proyectos = empresas.obtener(i).proyectos.inorder_traversal()
         for j in proyectos:
             proyectosTotales.append(j)
-    
     guardar_datos_en_json(proyectosTotales)
+    guardar_datos_en_csv(empresas.obtener_nodos())
 menuPrincipal()

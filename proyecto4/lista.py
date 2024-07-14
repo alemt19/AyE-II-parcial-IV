@@ -86,3 +86,10 @@ class ListaEnlazada:
         actual.siguiente = actual.siguiente.siguiente
         self.longitud -= 1
         return valor
+    def obtener_nodos(self):
+        nodos = []
+        actual = self.cabeza
+        while actual:
+            nodos.append(actual.valor)
+            actual = actual.siguiente
+        return nodos
