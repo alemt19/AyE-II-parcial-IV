@@ -56,13 +56,14 @@ def menuPrincipal():
 
         elif opcion == "3":
             idEmpresa = int(input("Ingrese el ID de la empresa de la cual desea gestionar los proyectos: "))
-            proyectos = tree #Provisional para probar, deberían ser los proyectos de una empresa
+            empresa = empresas.obtener(idEmpresa-1)
+            proyectos = empresa.proyectos
             nombre = input("Ingrese el nombre del proyecto del cual quiere gestionar sus tareas: ")
             proyecto = proyectos.buscar_proyecto(proyectos.root, 'nombre', nombre)
             if proyecto is None:
                 print("no se encontro el proyecto")
             else:
-                gestionTareas.menu(proyecto.key.tareas)
+                gestionTareas.menu(proyecto.key.key.tareas)
 
         elif opcion == "6":
             print("Saliendo del programa.")

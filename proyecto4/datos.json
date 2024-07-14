@@ -11,17 +11,6 @@
         "equipo": "Equipo A",
         "tareas": [
             {
-                "id": 2,
-                "nombre": "sddsfs",
-                "descripcion": "ddsfsdf",
-                "fecha_inicio": "2024-12-12",
-                "fecha_fin": "2024-12-12",
-                "estado": "dsfsds",
-                "empresa_cliente": "sfsd",
-                "porcentaje": "3",
-                "subtareas": []
-            },
-            {
                 "id": 1,
                 "nombre": "sddsfs",
                 "descripcion": "ddsfsdf",
@@ -53,7 +42,7 @@
         "equipo": "Equipo B",
         "tareas": [
             {
-                "id": 3,
+                "id": 2,
                 "nombre": "Tarea 2",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 2",
                 "fecha_inicio": "2024-08-01",
@@ -63,7 +52,7 @@
                 "porcentaje": 0,
                 "subtareas": [
                     {
-                        "id": 3,
+                        "id": 2,
                         "nombre": "Subtarea 2",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
@@ -84,7 +73,7 @@
         "equipo": "Equipo C",
         "tareas": [
             {
-                "id": 4,
+                "id": 3,
                 "nombre": "Tarea 3",
                 "descripcion": "Descripci\u00c3\u00b3n de la tarea 3",
                 "fecha_inicio": "2024-09-01",
@@ -94,7 +83,7 @@
                 "porcentaje": 100,
                 "subtareas": [
                     {
-                        "id": 4,
+                        "id": 3,
                         "nombre": "Subtarea 3",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
                         "estado": "Completado"

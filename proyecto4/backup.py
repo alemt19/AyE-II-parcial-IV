@@ -80,7 +80,7 @@ def cargar_datos_desde_json():
                             )
                 va+=1
                 cont+=1
-            proyectos.insert(proyecto)
+            proyectos.insert2(proyecto)
     
     # Cargar subtareas desde subtareas.json
     # Respaldar datos de proyectos a un archivo
@@ -110,50 +110,56 @@ def cargar_datos_desde_csv(proyectosJSON):
                 proyectosAsociados = row[9].split("-")
 
                 for i in proyectosAsociados:
-                    empresa.proyectos.insert(proyectosJSON.buscar_proyecto(proyectosJSON.root, "nombre", i))
+                    empresa.proyectos.insert(proyectosJSON.buscar_proyecto2(proyectosJSON.root, "nombre", i))
                 empresas.agregar(empresa)
     return empresas
 
 def guardar_datos_en_json(proyectos):
     data = []
-    for proyecto in proyectos:
+    for p in proyectos:
+        if p.__class__.__name__ == "AVLNode":
+            proyecto = p.key
+        elif p.__class__.__name__ == "Proyecto":
+            proyecto = p
         proyecto_data = {
-            "id": proyecto.key.id,
-            "nombre": proyecto.key.nombre,
-            "descripcion": proyecto.key.descripcion,
-            "fecha_inicio": proyecto.key.fecha_inicio.strftime("%Y-%m-%d"),
-            "fecha_fin": proyecto.key.fecha_fin.strftime("%Y-%m-%d"),
-            "estado": proyecto.key.estado_actual,
-            "empresa": proyecto.key.empresa,
-            "gerente": proyecto.key.gerente,
-            "equipo": proyecto.key.equipo,
+            "id": proyecto.id,
+            "nombre": proyecto.nombre,
+            "descripcion": proyecto.descripcion,
+            "fecha_inicio": proyecto.fecha_inicio.strftime("%Y-%m-%d"),
+            "fecha_fin": proyecto.fecha_fin.strftime("%Y-%m-%d"),
+            "estado": proyecto.estado_actual,
+            "empresa": proyecto.empresa,
+            "gerente": proyecto.gerente,
+            "equipo": proyecto.equipo,
             "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
         }
-        tareas = proyecto.key.tareas.inorder_traversal(proyecto.key.tareas.root)
-        for tarea in tareas:
-            tarea_data = {
-                "id": tarea.id,
-                "nombre": tarea.nombre,
-                "descripcion": tarea.descripcion,
-                "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
-                "fecha_fin": tarea.fecha_fin.strftime("%Y-%m-%d"),
-                "estado": tarea.estado,
-                "empresa_cliente": tarea.empresa,
-                "porcentaje": tarea.porcentaje,
-                "subtareas" : []
-                # Agregar otros atributos de tarea según sea necesario
-            }
-            subtareas = tarea.subtareas.inorder_traversal(tarea.subtareas.root)
-            if subtareas[0] is not None:
-                for subtarea in subtareas:
-                    subtarea_data = {
-                    "id": subtarea.id,
-                    "nombre": subtarea.nombre,
-                    "descripcion": subtarea.descripcion,
-                    "estado": subtarea.estado,
+        if proyecto.tareas.root.data.__class__.__name__ != "NoneType":
+            tareas = proyecto.tareas.inorder_traversal(proyecto.tareas.root)
+            for tarea in tareas:
+                tarea_data = {
+                    "id": tarea.id,
+                    "nombre": tarea.nombre,
+                    "descripcion": tarea.descripcion,
+                    "fecha_inicio": tarea.fecha_inicio.strftime("%Y-%m-%d"),
+                    "fecha_fin": tarea.fecha_fin.strftime("%Y-%m-%d"),
+                    "estado": tarea.estado,
+                    "empresa_cliente": tarea.empresa,
+                    "porcentaje": tarea.porcentaje,
+                    "subtareas" : []
+                    # Agregar otros atributos de tarea según sea necesario
                 }
-                tarea_data["subtareas"].append(subtarea_data)
-            proyecto_data["tareas"].append(tarea_data)
+                if tarea.subtareas.root.data.__class__.__name__ != "NoneType":
+                    subtareas = tarea.subtareas.inorder_traversal(tarea.subtareas.root)
+                    if subtareas[0] is not None:
+                        for subtarea in subtareas:
+                            subtarea_data = {
+                            "id": subtarea.id,
+                            "nombre": subtarea.nombre,
+                            "descripcion": subtarea.descripcion,
+                            "estado": subtarea.estado,
+                        }
+                        tarea_data["subtareas"].append(subtarea_data)
+                proyecto_data["tareas"].append(tarea_data)
                 
         data.append(proyecto_data)  # Agregamos los datos del proyecto a la lista
 

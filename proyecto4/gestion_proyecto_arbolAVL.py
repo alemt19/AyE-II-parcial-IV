@@ -55,7 +55,7 @@ class AVLTree:
     def _insert(self, node, key):
         if not node:
             return AVLNode(key)
-        elif key < node.key:
+        elif key < node.key.key:
             node.left = self._insert(node.left, key)
         else:
             node.right = self._insert(node.right, key)
@@ -63,7 +63,22 @@ class AVLTree:
         node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
         return self._balance(node)
     
-    
+    def insert2(self, key):
+        if not self.root:
+            self.root = AVLNode(key)
+        else:
+            self.root = self._insert2(self.root, key)
+
+    def _insert2(self, node, key):
+        if not node:
+            return AVLNode(key)
+        elif key < node.key:
+            node.left = self._insert2(node.left, key)
+        else:
+            node.right = self._insert2(node.right, key)
+
+        node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
+        return self._balance(node)
 
     def _balance(self, node):
         balance = self._get_balance(node)
@@ -146,23 +161,44 @@ class AVLTree:
     def buscar_proyecto(self, root, criteria, value):
         if not root:
             return None
-        if criteria == 'id' and root.key.id == value:
+        if criteria == 'id' and root.key.key.id == value:
             return root
-        elif criteria == 'nombre' and root.key.nombre == value:
+        elif criteria == 'nombre' and root.key.key.nombre == value:
             return root
-        elif criteria == 'gerente' and root.key.gerente == value:
+        elif criteria == 'gerente' and root.key.key.gerente == value:
             return root
-        elif criteria == 'fecha_inicio' and root.key.fecha_inicio == value:
+        elif criteria == 'fecha_inicio' and root.key.key.fecha_inicio == value:
             return root
-        elif criteria == 'fecha_fin' and root.key.fecha_fin == value:
+        elif criteria == 'fecha_fin' and root.key.key.fecha_fin == value:
             return root
-        elif criteria == 'estado_actual' and root.key.estado_actual == value:
+        elif criteria == 'estado_actual' and root.key.key.estado_actual == value:
             return root
         
         left_search = self.buscar_proyecto(root.left, criteria, value)
         if left_search:
             return left_search
         return self.buscar_proyecto(root.right, criteria, value)
+    
+    def buscar_proyecto2(self, root, criteria, value):
+        if not root:
+            return None
+        if criteria == 'id' and root.key.key.id == value:
+            return root
+        elif criteria == 'nombre' and root.key.nombre == value:
+            return root
+        elif criteria == 'gerente' and root.key.key.gerente == value:
+            return root
+        elif criteria == 'fecha_inicio' and root.key.key.fecha_inicio == value:
+            return root
+        elif criteria == 'fecha_fin' and root.key.key.fecha_fin == value:
+            return root
+        elif criteria == 'estado_actual' and root.key.key.estado_actual == value:
+            return root
+        
+        left_search = self.buscar_proyecto2(root.left, criteria, value)
+        if left_search:
+            return left_search
+        return self.buscar_proyecto2(root.right, criteria, value)
 
     
     
