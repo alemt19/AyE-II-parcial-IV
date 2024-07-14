@@ -53,12 +53,10 @@ def menu(tree):
             else:
                 print(tarea_encontrada.data)
         elif opcion == "3":
-            tarea=str(input("ingrese el nombre de la tarea a eliminar: "))
-            a=tree.delete_node_by_attribute('nombre',tarea)
-            if a:
-                print("eliminado exitosamente")
-            else:
-                print("no se pudo eliminar")
+            tarea=input("ingrese el nombre de la tarea a eliminar: ")
+            t=tree.find_node_by_attribute('nombre', tarea)
+            a = tree.delete_node(t)
+            print("eliminado exitosamente")
 
         elif opcion == "4":
             resultado= tree.inorder_traversal(tree.root)
@@ -78,6 +76,7 @@ def menu(tree):
                 empresa=input("Empresa: ")
                 progress = input("Porcentaje completado: ")
                 tarea=Tarea(name,description,start_date,due_date,status,empresa,progress)
+                tarea.id = tree.find_node_by_attribute("nombre", starea).data.id
                 tree.modify_node_by_attribute('nombre',starea,tarea)
                 print("tarea actualizada correctamente")
                 
@@ -91,53 +90,8 @@ def menu(tree):
             break
         else:
             print("Opción no válida, por favor intente de nuevo.")
+            
 """
-class Proyecto:
-    def __init__(self, nombre):
-        # Constructor de la clase Proyecto
-        self.nombre = nombre
-        self.tareas = []  # Lista para almacenar tareas
-
-    def agregar_tarea(self, tarea):
-        # Método para agregar una tarea al proyecto
-        self.tareas.append(tarea)
-
-    def eliminar_tarea(self, id_tarea):
-        # Método para eliminar una tarea basada en su ID
-        self.tareas = [tarea for tarea in self.tareas if tarea.id != id_tarea]
-
-    def agregar_subtarea_a_tarea(self, id_tarea, subtarea):
-        # Método para agregar una subtarea a una tarea específica por ID de tarea
-        for tarea in self.tareas:
-            if tarea.id == id_tarea:
-                tarea.agregar_subtarea(subtarea)
-                return
-
-    def eliminar_subtarea_de_tarea(self, id_tarea, id_subtarea):
-        # Método para eliminar una subtarea de una tarea específica por IDs
-        for tarea in self.tareas:
-            if tarea.id == id_tarea:
-                tarea.eliminar_subtarea(id_subtarea)
-                return
-
-    def listar_tareas(self):
-        # Método para listar todas las tareas del proyecto
-        print(f"Tareas del Proyecto {self.nombre}:")
-        for tarea in self.tareas:
-            self._mostrar_subtareas_en_nivel(tarea, 0, 2)
-
-    def _mostrar_subtareas_en_nivel(self, tarea, nivel_restante, indent):
-        # Método auxiliar para mostrar las subtareas en un nivel específico
-        print(' ' * indent + f"- {tarea}")
-        if nivel_restante > 0:
-            for subtarea in tarea.subtareas:
-                self._mostrar_subtareas_en_nivel(subtarea, nivel_restante - 1, indent + 2)
-
-    def eliminar_subtarea(self, id_subtarea):
-        # Método para eliminar una subtarea de cualquier tarea del proyecto
-        for tarea in self.tareas:
-            tarea.eliminar_subtarea(id_subtarea)
-
     def serializar(self):
         # Método para serializar el proyecto a un diccionario
         proyecto_dict = {
@@ -208,26 +162,4 @@ class Proyecto:
             if "subtareas" in subtarea_dict:
                 self._deserializar_subtareas(subtarea_dict["subtareas"], subtarea)
             tarea_padre.agregar_subtarea(subtarea)
-
-    def agregar_tarea_subtarea(self, nombre_tarea, subtarea):
-        # Método para agregar una subtarea a una tarea específica por nombre de tarea
-        for tarea in self.tareas:
-            if tarea.nombre == nombre_tarea:
-                tarea.agregar_subtarea(subtarea)
-                return
-
-    def consultar_tarea_por_nombre(self, nombre_tarea):
-        # Método para consultar una tarea por su nombre
-        for tarea in self.tareas:
-            if tarea.nombre == nombre_tarea:
-                return tarea
-        return None
-
-    def eliminar_tarea_por_nombre(self, nombre_tarea):
-        # Método para eliminar una tarea por su nombre (y sus subtareas)
-        self.tareas = [tarea for tarea in self.tareas if tarea.nombre != nombre_tarea]
-
-    def eliminar_subtarea_de_todas_las_tareas(self, id_subtarea):
-        # Método para eliminar una subtarea de todas las tareas del proyecto
-        for tarea in self.tareas:
-            tarea.eliminar_subtarea(id_subtarea)"""
+"""

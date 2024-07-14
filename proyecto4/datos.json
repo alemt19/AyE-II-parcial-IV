@@ -12,13 +12,13 @@
         "tareas": [
             {
                 "id": 1,
-                "nombre": "sddsfs",
-                "descripcion": "ddsfsdf",
-                "fecha_inicio": "2024-12-12",
+                "nombre": "Tarea 1",
+                "descripcion": "Descripcion 1",
+                "fecha_inicio": "2024-07-14",
                 "fecha_fin": "2024-12-12",
-                "estado": "dsfsds",
-                "empresa_cliente": "sfsd",
-                "porcentaje": "3",
+                "estado": "Pendiente",
+                "empresa_cliente": "Empresa A",
+                "porcentaje": "0",
                 "subtareas": [
                     {
                         "id": 1,

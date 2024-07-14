@@ -133,7 +133,9 @@ def guardar_datos_en_json(proyectos):
             "equipo": proyecto.equipo,
             "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
         }
-        if proyecto.tareas.root.data.__class__.__name__ != "NoneType":
+        if proyecto.tareas.root.__class__.__name__ == "NoneType":
+            pass
+        elif proyecto.tareas.root.data.__class__.__name__ != "NoneType":
             tareas = proyecto.tareas.inorder_traversal(proyecto.tareas.root)
             for tarea in tareas:
                 tarea_data = {
