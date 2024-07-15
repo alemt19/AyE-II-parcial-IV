@@ -1,17 +1,15 @@
 import gestion_proyecto_arbolAVL as gestionProyectos
 import gestionEmpresas
 import gestionTareas
-from gestionSprints import Menu
+from gestionSprints import manejar_menu
 from backup import cargar_datos_desde_json
 from backup import cargar_datos_desde_csv
-from backup import cargar_sprints_de_json
 from backup import guardar_datos_en_json
 from backup import guardar_datos_en_csv
 
 def menuPrincipal():
     tree = cargar_datos_desde_json()
     empresas = cargar_datos_desde_csv(tree)
-    sprints = cargar_sprints_de_json()
 
     while True:
         # Menú principal
@@ -59,7 +57,7 @@ def menuPrincipal():
             gestionProyectos.menu(proyectos)
 
         elif opcion == "3":
-            idEmpresa = int(input("Ingrese el ID de la empresa de la cual desea gestionar los proyectos: "))
+            idEmpresa = int(input("Ingrese el ID de la empresa de la cual desea gestionar las tareas: "))
             empresa = empresas.obtener(idEmpresa-1)
             proyectos = empresa.proyectos
             nombre = input("Ingrese el nombre del proyecto del cual quiere gestionar sus tareas: ")
@@ -70,7 +68,12 @@ def menuPrincipal():
                 gestionTareas.menu(proyecto.key.key.tareas)
 
         elif opcion == "4":
-            sprints.menu()
+            idEmpresa = int(input("Ingrese el ID de la empresa de la cual desea gestionar los sprints: "))
+            empresa = empresas.obtener(idEmpresa-1)
+            proyectos = empresa.proyectos
+            nombre = input("Ingrese el nombre del proyecto del cual quiere gestionar los sprints: ")
+            proyecto = proyectos.buscar_proyecto(proyectos.root, 'nombre', nombre)
+            manejar_menu(proyecto.key.key.sprints, proyecto.key.key.tareas)
 
         elif opcion == "6":
             print("Saliendo del programa.")
@@ -84,7 +87,6 @@ def menuPrincipal():
         for j in proyectos:
             proyectosTotales.append(j)
     
-    sprintsLista = sprints.sprints.get_all_nodes()
-    guardar_datos_en_json(proyectosTotales, sprintsLista)
+    guardar_datos_en_json(proyectosTotales)
     guardar_datos_en_csv(empresas.obtener_nodos())
 menuPrincipal()

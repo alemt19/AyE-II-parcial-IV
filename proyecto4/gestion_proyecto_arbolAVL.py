@@ -199,6 +199,17 @@ class AVLTree:
         if left_search:
             return left_search
         return self.buscar_proyecto2(root.right, criteria, value)
+
+    def buscar_sprint(self, root, criteria, value):
+        if not root:
+            return None
+        elif criteria == 'nombre' and root.key.key.nombre == value:
+            return root
+        
+        left_search = self.buscar_sprint(root.left, criteria, value)
+        if left_search:
+            return left_search
+        return self.buscar_sprint(root.right, criteria, value)
     
     def inorder_traversal(self):
         nodes = []

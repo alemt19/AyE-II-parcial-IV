@@ -2,12 +2,14 @@ from gestion_proyecto_arbolAVL import AVLTree
 from listaEnlazada import LinkedList
 
 class Tarea:
-    def __init__(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
-        self.id = id_tarea
+    id_counter = 1
+    def __init__(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_fin, estado, empresa, porcentaje):
+        Tarea.id_counter += 1
+        self.id = Tarea.id_counter
         self.nombre = nombre
         self.descripcion = descripcion
         self.fecha_inicio = fecha_inicio
-        self.fecha_vencimiento = fecha_vencimiento
+        self.fecha_fin = fecha_fin
         self.estado = estado
         self.empresa = empresa
         self.porcentaje = porcentaje
@@ -24,7 +26,10 @@ class Tarea:
             current = current.next
 
 class Sprint:
+    id_counter = 1
     def __init__(self, nombre, fecha_inicio, fecha_fin, estado, objetivos, equipo):
+        Sprint.id_counter += 1
+        self.id = Sprint.id_counter
         self.id = None  # El id se asignará al insertar en el árbol AVL
         self.nombre = nombre
         self.fecha_inicio = fecha_inicio
@@ -34,8 +39,8 @@ class Sprint:
         self.equipo = equipo
         self.tareas = LinkedList()  # Lista enlazada para almacenar las tareas del sprint
 
-    def agregar_tarea(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
-        tarea = Tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje)
+    def agregar_tarea(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_fin, estado, empresa, porcentaje):
+        tarea = Tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_fin, estado, empresa, porcentaje)
         self.tareas.append(tarea)
 
     def mostrar_tareas(self):
@@ -127,23 +132,22 @@ class Sprint:
                 tarea = tarea_id(tarea_id)  # Función para obtener la tarea por ID
                 if tarea:
                     sprint.agregar_tarea(tarea.id, tarea.nombre, tarea.descripcion, tarea.fecha_inicio,
-                                         tarea.fecha_vencimiento, tarea.estado, tarea.empresa, tarea.porcentaje)
+                                         tarea.fecha_fin, tarea.estado, tarea.empresa, tarea.porcentaje)
         return arbol
 
 # Función para mostrar el menú
 def mostrar_menu():
     print("\nMenu:")
-    print("1. Agregar tarea a sprint")
-    print("2. Mostrar tareas de sprint")
-    print("3. Eliminar tarea de sprint")
-    print("4. Mostrar tareas disponibles")
-    print("5. Mostrar subtareas de tarea")
-    print("6. Salir")
+    print("1. Agregar sprint")
+    print("2. Agregar tarea a sprint")
+    print("3. Mostrar tareas de sprint")
+    print("4. Eliminar tarea de sprint")
+    print("5. Mostrar tareas disponibles")
+    print("6. Mostrar subtareas de tarea")
+    print("7. Salir")
 
 # Función para manejar la entrada del usuario
-def manejar_menu():
-    sprints = AVLTree()
-    tareas_proyecto = LinkedList()  # Aquí puedes cargar tus tareas del proyecto
+def manejar_menu(sprints, tareas):
 
     while True:
         mostrar_menu()
@@ -158,26 +162,28 @@ def manejar_menu():
             equipo = input("Equipo: ")
             sprint = Sprint(nombre_sprint, fecha_inicio, fecha_fin, estado, objetivos, equipo)
             sprints.insertar(sprint)
-            id_tarea = input("ID de la tarea: ")
+        elif opcion == '2':
+            nombre_sprint = input("Nombre del sprint al que se desea agregar una tarea: ")
+            sprint = sprints.buscar_sprint(sprints.root, 'nombre', nombre_sprint).key
             nombre_tarea = input("Nombre de la tarea: ")
             descripcion = input("Descripción: ")
             fecha_inicio_tarea = input("Fecha de inicio (YYYY-MM-DD): ")
-            fecha_vencimiento = input("Fecha de vencimiento (YYYY-MM-DD): ")
+            fecha_fin = input("Fecha de vencimiento (YYYY-MM-DD): ")
             estado_tarea = input("Estado: ")
             empresa = input("Empresa: ")
             porcentaje = int(input("Porcentaje (0-100): "))
-            sprint.agregar_tarea(id_tarea, nombre_tarea, descripcion, fecha_inicio_tarea, fecha_vencimiento, estado_tarea, empresa, porcentaje)
+            sprint.agregar_tarea(nombre_tarea, descripcion, fecha_inicio_tarea, fecha_fin, estado_tarea, empresa, porcentaje)
             print("Tarea agregada exitosamente.")
 
-        elif opcion == '2':
-            nombre_sprint = input("Nombre del sprint para mostrar tareas: ")
-            sprint = sprints.buscar(nombre_sprint)  # Suponiendo que 'buscar' devuelve un sprint por nombre
+        elif opcion == '3':
+            nombre_sprint = input("Nombre del sprint al que se desea agregar una tarea: ")
+            sprint = sprints.buscar_sprint(sprints.root, 'nombre', nombre_sprint).key
             if sprint:
                 sprint.mostrar_tareas()
             else:
                 print("Sprint no encontrado.")
 
-        elif opcion == '3':
+        elif opcion == '4':
             nombre_sprint = input("Nombre del sprint: ")
             sprint = sprints.buscar(nombre_sprint)  # Suponiendo que 'buscar' devuelve un sprint por nombre
             if sprint:
@@ -187,15 +193,15 @@ def manejar_menu():
             else:
                 print("Sprint no encontrado.")
 
-        elif opcion == '4':
+        elif opcion == '5':
             nombre_sprint = input("Nombre del sprint para mostrar tareas disponibles: ")
             sprint = sprints.buscar(nombre_sprint)  # Suponiendo que 'buscar' devuelve un sprint por nombre
             if sprint:
-                sprint.mostrar_tareas_disponibles(tareas_proyecto)
+                sprint.mostrar_tareas_disponibles(tareas)
             else:
                 print("Sprint no encontrado.")
 
-        elif opcion == '5':
+        elif opcion == '6':
             nombre_sprint = input("Nombre del sprint: ")
             sprint = sprints.buscar(nombre_sprint)  # Suponiendo que 'buscar' devuelve un sprint por nombre
             if sprint:
@@ -204,7 +210,7 @@ def manejar_menu():
             else:
                 print("Sprint no encontrado.")
 
-        elif opcion == '6':
+        elif opcion == '7':
             print("Saliendo...")
             break
 

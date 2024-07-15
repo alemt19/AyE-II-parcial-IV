@@ -9,6 +9,7 @@ import os
 import gestion_proyecto_arbolAVL as gestionProyecto
 from reportes_proyecto2 import NaryTree
 import csv
+from gestionSprints import Sprint
 
 def cargar_datos_desde_json():
     proyectos = gestionProyecto.AVLTree()
@@ -101,6 +102,16 @@ def cargar_datos_desde_json():
                         cont2+=1
                 va+=1
                 cont+=1
+            for i in proyecto_data["sprints"]:
+                proyecto.sprints.insert2(Sprint(
+                    i["nombre"],
+                    i["fecha_inicio"],
+                    i["fecha_fin"],
+                    i["estado"],
+                    i["objetivos"],
+                    i["equipo"]
+                ))
+
             proyectos.insert2(proyecto)
     
     # Cargar subtareas desde subtareas.json
@@ -110,32 +121,32 @@ def cargar_datos_desde_json():
     
     return proyectos
 
-def cargar_sprints_de_json():
-    sprints = LinkedList()
-    config_path = os.path.join("proyecto4", "config.txt")
-    # Leer y cargar el archivo de configuración
-    with open(config_path, "r") as config_file:
-        config = json.load(config_file)
-    ruta_proyectos = config["datos"]
+# def cargar_sprints_de_json():
+#     sprints = LinkedList()
+#     config_path = os.path.join("proyecto4", "config.txt")
+#     # Leer y cargar el archivo de configuración
+#     with open(config_path, "r") as config_file:
+#         config = json.load(config_file)
+#     ruta_proyectos = config["datos"]
     
-    # Cargar datos de proyectos
-    with open(ruta_proyectos, "r") as archivo:
-        datos = json.load(archivo)
-        for proyecto_data in datos:
-            for sprints in proyecto_data["sprints"]:
-                for sprint in sprints:
-                    # Clase provisional
-                    nuevo_sprint = claseSprint(
-                    sprint["id"],
-                    sprint["nombre"],
-                    sprint["fecha_inicio"],
-                    sprint["fecha_fin"],
-                    sprint["estado"],
-                    sprint["objetivos"],
-                    sprint["equipo"]
-                    )
-                    sprints.append(nuevo_sprint)
-    return sprints
+#     # Cargar datos de proyectos
+#     with open(ruta_proyectos, "r") as archivo:
+#         datos = json.load(archivo)
+#         for proyecto_data in datos:
+#             for sprints in proyecto_data["sprints"]:
+#                 for sprint in sprints:
+#                     # Clase provisional
+#                     nuevo_sprint = Sprint(
+#                     sprint["id"],
+#                     sprint["nombre"],
+#                     sprint["fecha_inicio"],
+#                     sprint["fecha_fin"],
+#                     sprint["estado"],
+#                     sprint["objetivos"],
+#                     sprint["equipo"]
+#                     )
+#                     sprints.append(nuevo_sprint)
+#     return sprints
 
 
 def cargar_datos_desde_csv(proyectosJSON):
@@ -183,8 +194,9 @@ def guardar_datos_en_json(proyectos, sprints):
             "tareas": [],  # Suponiendo que hay una estructura para guardar tareas en Proyecto
             "sprints": []
         }
-        if sprints:
-            for sprint in sprints:
+        if proyecto.sprints.root.data.__class__.__name__ != "NoneType":
+            sprintsLista = proyecto.sprints.inorder_traversal()
+            for sprint in sprintsLista:
                 sprint_data = {
                     "id": sprint.id,
                     "nombre": sprint.nombre,

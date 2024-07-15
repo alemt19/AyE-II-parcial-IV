@@ -15,7 +15,7 @@ class Proyecto:
         self.empresa = empresa
         self.gerente = gerente
         self.equipo = equipo
-        self.sprint= AVLTree()
+        self.sprints= AVLTree()
         self.tareas=NaryTree(None)
     
     def __str__(self):
