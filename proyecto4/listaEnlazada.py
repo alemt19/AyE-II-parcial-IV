@@ -57,3 +57,11 @@ class LinkedList:
             count += 1
             current = current.next
         return count
+    
+    def get_all_nodes(self):
+        nodes = []
+        current = self.head
+        while current:
+            nodes.append(current.data)
+            current = current.next
+        return nodes

@@ -1,14 +1,17 @@
 import gestion_proyecto_arbolAVL as gestionProyectos
 import gestionEmpresas
 import gestionTareas
+from gestionSprints import Menu
 from backup import cargar_datos_desde_json
 from backup import cargar_datos_desde_csv
+from backup import cargar_sprints_de_json
 from backup import guardar_datos_en_json
 from backup import guardar_datos_en_csv
 
 def menuPrincipal():
     tree = cargar_datos_desde_json()
     empresas = cargar_datos_desde_csv(tree)
+    sprints = cargar_sprints_de_json()
 
     while True:
         # Menú principal
@@ -66,6 +69,9 @@ def menuPrincipal():
             else:
                 gestionTareas.menu(proyecto.key.key.tareas)
 
+        elif opcion == "4":
+            sprints.menu()
+
         elif opcion == "6":
             print("Saliendo del programa.")
             break
@@ -77,6 +83,8 @@ def menuPrincipal():
         proyectos = empresas.obtener(i).proyectos.inorder_traversal()
         for j in proyectos:
             proyectosTotales.append(j)
-    guardar_datos_en_json(proyectosTotales)
+    
+    sprintsLista = sprints.sprints.get_all_nodes()
+    guardar_datos_en_json(proyectosTotales, sprintsLista)
     guardar_datos_en_csv(empresas.obtener_nodos())
 menuPrincipal()

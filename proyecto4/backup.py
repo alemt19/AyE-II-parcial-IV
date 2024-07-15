@@ -4,6 +4,7 @@ from claseEmpresa import Empresa
 from gestionTareas import Tarea
 from proyecto import Proyecto as pr
 from subtarea import Subtarea
+from listaEnlazada import LinkedList
 import os
 import gestion_proyecto_arbolAVL as gestionProyecto
 from reportes_proyecto2 import NaryTree
@@ -109,6 +110,34 @@ def cargar_datos_desde_json():
     
     return proyectos
 
+def cargar_sprints_de_json():
+    sprints = LinkedList()
+    config_path = os.path.join("proyecto4", "config.txt")
+    # Leer y cargar el archivo de configuración
+    with open(config_path, "r") as config_file:
+        config = json.load(config_file)
+    ruta_proyectos = config["datos"]
+    
+    # Cargar datos de proyectos
+    with open(ruta_proyectos, "r") as archivo:
+        datos = json.load(archivo)
+        for proyecto_data in datos:
+            for sprints in proyecto_data["sprints"]:
+                for sprint in sprints:
+                    # Clase provisional
+                    nuevo_sprint = claseSprint(
+                    sprint["id"],
+                    sprint["nombre"],
+                    sprint["fecha_inicio"],
+                    sprint["fecha_fin"],
+                    sprint["estado"],
+                    sprint["objetivos"],
+                    sprint["equipo"]
+                    )
+                    sprints.append(nuevo_sprint)
+    return sprints
+
+
 def cargar_datos_desde_csv(proyectosJSON):
     empresas = ListaEnlazada()
     # Leer los datos del archivo CSV datosEmpresa
@@ -134,7 +163,7 @@ def cargar_datos_desde_csv(proyectosJSON):
                 empresas.agregar(empresa)
     return empresas
 
-def guardar_datos_en_json(proyectos):
+def guardar_datos_en_json(proyectos, sprints):
     data = []
     for p in proyectos:
         if p.__class__.__name__ == "AVLNode":
@@ -151,8 +180,21 @@ def guardar_datos_en_json(proyectos):
             "empresa": proyecto.empresa,
             "gerente": proyecto.gerente,
             "equipo": proyecto.equipo,
-            "tareas": []  # Suponiendo que hay una estructura para guardar tareas en Proyecto
+            "tareas": [],  # Suponiendo que hay una estructura para guardar tareas en Proyecto
+            "sprints": []
         }
+        if sprints:
+            for sprint in sprints:
+                sprint_data = {
+                    "id": sprint.id,
+                    "nombre": sprint.nombre,
+                    "fecha_inicio": sprint.fecha_inicio.strftime("%Y-%m-%d"),
+                    "fecha_fin": sprint.fecha_fin.strftime("%Y-%m-%d"),
+                    "estado": sprint.estado,
+                    "objetivos": sprint.objetivos,
+                    "equipo": sprint.equipo
+                }
+                proyecto_data["sprints"].append(sprint_data)
         if proyecto.tareas.root.__class__.__name__ == "NoneType":
             pass
         elif proyecto.tareas.root.data.__class__.__name__ != "NoneType":
@@ -180,7 +222,6 @@ def guardar_datos_en_json(proyectos):
                             "descripcion": subtarea.descripcion,
                             "estado": subtarea.estado,
                             }
-                            print(subtarea)
                             tarea_data["subtareas"].append(subtarea_data)
                 proyecto_data["tareas"].append(tarea_data)
                 
