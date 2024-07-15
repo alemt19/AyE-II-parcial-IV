@@ -1,131 +1,133 @@
-from gestion_proyecto_arbolAVL import AVLTree
 from listaEnlazada import LinkedList
-class Tarea:
-    def __init__(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
-        self.id = id_tarea
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.fecha_inicio = fecha_inicio
-        self.fecha_vencimiento = fecha_vencimiento
-        self.estado = estado
-        self.empresa = empresa
-        self.porcentaje = porcentaje
-        self.subtareas = LinkedList()  # Lista enlazada para subtareas
+from gestion_proyecto_arbolAVL import AVLTree
 
-    def agregar_subtarea(self, subtarea):
-        self.subtareas.append(subtarea)
+class Menu:
+    def __init__(self):
+        self.sprints = LinkedList()  # Lista enlazada para guardar instancias de Sprint
+        self.tareas_proyecto = LinkedList()  # Lista enlazada para guardar instancias de Tarea del proyecto
 
-    def mostrar_subtareas(self, nivel=0):
-        print("  " * nivel + f"- {self.nombre}")
-        current = self.subtareas.head
+    def agregar_sprint(self, sprint):
+        self.sprints.append(sprint)
+
+    def encontrar_sprint(self, nombre):
+        current = self.sprints.head
         while current:
-            current.data.mostrar_subtareas(nivel + 1)
+            if current.data.nombre == nombre:
+                return current.data
             current = current.next
+        return None
 
-class Sprint:
-    def __init__(self, nombre, fecha_inicio, fecha_fin, estado, objetivos, equipo):
-        self.id = None  # El id se asignará al insertar en el árbol AVL
-        self.nombre = nombre
-        self.fecha_inicio = fecha_inicio
-        self.fecha_fin = fecha_fin
-        self.estado = estado
-        self.objetivos = objetivos
-        self.equipo = equipo
-        self.tareas = LinkedList()  # Lista enlazada para almacenar las tareas del sprint
-
-    def agregar_tarea(self, id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje):
-        tarea = Tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje)
-        self.tareas.append(tarea)
-
-    def mostrar_tareas(self):
-        if not self.tareas.head:
-            print("No hay tareas asignadas a este sprint.")
-        else:
-            current = self.tareas.head
-            while current:
-                print(f"- Tarea {current.data.id}: {current.data.nombre}")
-                current = current.next
-
-    def eliminar_tarea(self, id_tarea):
-        current = self.tareas.head
-        prev = None
+    def encontrar_tarea(self, id_tarea):
+        current = self.tareas_proyecto.head
         while current:
             if current.data.id == id_tarea:
-                if prev:
-                    prev.next = current.next
+                return current.data
+            current = current.next
+        return None
+
+    def menu(self):
+        while True:
+            print("\n--- Menú de Gestión de Sprint y Tareas ---")
+            print("1. Agregar un sprint")
+            print("2. Agregar una tarea al proyecto")
+            print("3. Agregar una tarea a un sprint")
+            print("4. Mostrar las tareas de un sprint")
+            print("5. Eliminar una tarea de un sprint")
+            print("6. Mostrar las subtareas de una tarea en un sprint")
+            print("7. Mostrar tareas disponibles para agregar a un sprint")
+            print("8. Mostrar todos los sprints")
+            print("9. Salir")
+
+            opcion = int(input("Seleccione una opción: "))
+
+            if opcion == 1:
+                nombre = input("Ingrese el nombre del sprint: ")
+                fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
+                fecha_fin = input("Ingrese la fecha de fin (YYYY-MM-DD): ")
+                estado = input("Ingrese el estado del sprint: ")
+                objetivos = input("Ingrese los objetivos del sprint: ")
+                equipo = input("Ingrese el equipo del sprint: ")
+                sprint = sprint(nombre, fecha_inicio, fecha_fin, estado, objetivos, equipo)
+                self.agregar_sprint(sprint)
+                print("Sprint agregado exitosamente.")
+
+            elif opcion == 2:
+                id_tarea = int(input("Ingrese el ID de la tarea: "))
+                nombre = input("Ingrese el nombre de la tarea: ")
+                descripcion = input("Ingrese la descripción de la tarea: ")
+                fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
+                fecha_vencimiento = input("Ingrese la fecha de vencimiento (YYYY-MM-DD): ")
+                estado = input("Ingrese el estado de la tarea: ")
+                empresa = input("Ingrese la empresa: ")
+                porcentaje = float(input("Ingrese el porcentaje completado: "))
+                tarea = tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje)
+                self.tareas_proyecto.append(tarea)
+                print("Tarea agregada al proyecto exitosamente.")
+
+            elif opcion == 3:
+                nombre_sprint = input("Ingrese el nombre del sprint: ")
+                sprint = self.encontrar_sprint(nombre_sprint)
+                if sprint:
+                    id_tarea = int(input("Ingrese el ID de la tarea: "))
+                    nombre = input("Ingrese el nombre de la tarea: ")
+                    descripcion = input("Ingrese la descripción de la tarea: ")
+                    fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
+                    fecha_vencimiento = input("Ingrese la fecha de vencimiento (YYYY-MM-DD): ")
+                    estado = input("Ingrese el estado de la tarea: ")
+                    empresa = input("Ingrese la empresa: ")
+                    porcentaje = float(input("Ingrese el porcentaje completado: "))
+                    tarea = tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje)
+                    sprint.agregar_tarea(id_tarea, nombre, descripcion, fecha_inicio, fecha_vencimiento, estado, empresa, porcentaje)
+                    print("Tarea agregada al sprint exitosamente.")
                 else:
-                    self.tareas.head = current.next
+                    print("Sprint no encontrado.")
+
+            elif opcion == 4:
+                nombre_sprint = input("Ingrese el nombre del sprint: ")
+                sprint = self.encontrar_sprint(nombre_sprint)
+                if sprint:
+                    sprint.mostrar_tareas()
+                else:
+                    print("Sprint no encontrado.")
+
+            elif opcion == 5:
+                nombre_sprint = input("Ingrese el nombre del sprint: ")
+                sprint = self.encontrar_sprint(nombre_sprint)
+                if sprint:
+                    id_tarea = int(input("Ingrese el ID de la tarea a eliminar: "))
+                    sprint.eliminar_tarea(id_tarea)
+                else:
+                    print("Sprint no encontrado.")
+
+            elif opcion == 6:
+                nombre_sprint = input("Ingrese el nombre del sprint: ")
+                sprint = self.encontrar_sprint(nombre_sprint)
+                if sprint:
+                    id_tarea = int(input("Ingrese el ID de la tarea: "))
+                    sprint.mostrar_subtareas_de_tarea(id_tarea)
+                else:
+                    print("Sprint no encontrado.")
+
+            elif opcion == 7:
+                nombre_sprint = input("Ingrese el nombre del sprint: ")
+                sprint = self.encontrar_sprint(nombre_sprint)
+                if sprint:
+                    sprint.mostrar_tareas_disponibles(self.tareas_proyecto)
+                else:
+                    print("Sprint no encontrado.")
+
+            elif opcion == 8:
+                print("Sprints disponibles:")
+                current = self.sprints.head
+                if not current:
+                    print("No hay sprints disponibles.")
+                while current:
+                    print(current.data)
+                    current = current.next
+
+            elif opcion == 9:
+                print("Saliendo del menú.")
                 break
-            prev = current
-            current = current.next
 
-    def mostrar_tareas_disponibles(self, tareas_proyecto):
-        disponibles = []
-        for tarea in tareas_proyecto:
-            if not any(tarea.data.id == tarea_sprint.data.id for tarea_sprint in self.tareas):
-                if tarea.data.estado != "completada":
-                    disponibles.append(tarea.data)
-        if not disponibles:
-            print("No hay tareas disponibles para agregar.")
-        else:
-            for tarea in disponibles:
-                print(f"- Tarea {tarea.id}: {tarea.nombre}")
-
-    def mostrar_subtareas_de_tarea(self, id_tarea):
-        current = self.tareas.head
-        while current:
-            if current.data.id == id_tarea:
-                print(f"Subtareas de {current.data.nombre}:")
-                current.data.mostrar_subtareas(1)
-                return
-            current = current.next
-        print(f"No se encontró la tarea con ID {id_tarea} en este sprint.")
-
-    def __repr__(self):
-        return f"Sprint(id={self.id}, nombre='{self.nombre}', estado='{self.estado}')"
-
-    def serializar(self):
-        return self._serializar(self.raiz)
-
-    def _serializar(self, nodo):
-        if not nodo:
-            return None
-        nodo_serializado = {
-            "sprint": {
-                "id": nodo.sprint.id,
-                "nombre": nodo.sprint.nombre,
-                "fecha_inicio": nodo.sprint.fecha_inicio,
-                "fecha_fin": nodo.sprint.fecha_fin,
-                "estado": nodo.sprint.estado,
-                "objetivos": nodo.sprint.objetivos,
-                "equipo": nodo.sprint.equipo,
-                "tareas": [tarea.id for tarea in nodo.sprint.tareas]
-            }
-        }
-        nodo_serializado["izquierda"] = self._serializar(nodo.izquierda)
-        nodo_serializado["derecha"] = self._serializar(nodo.derecha)
-        return nodo_serializado
-
-    @staticmethod
-    def deserializar(sprints_json):
-        if not sprints_json:
-            return AVLTree()
-        arbol = AVLTree()
-        for sprint_dict in sprints_json:
-            sprint = Sprint(
-                sprint_dict["nombre"],
-                sprint_dict["fecha_inicio"],
-                sprint_dict["fecha_fin"],
-                sprint_dict["estado"],
-                sprint_dict["objetivos"],
-                sprint_dict["equipo"]
-            )
-            sprint.id = sprint_dict["id"]
-            arbol.insertar(sprint)
-            for tarea_id in sprint_dict["tareas"]:
-                tarea = obtener_tarea_por_id(tarea_id)  # Función para obtener la tarea por ID
-                if tarea:
-                    sprint.agregar_tarea(tarea.id, tarea.nombre, tarea.descripcion, tarea.fecha_inicio,
-                                         tarea.fecha_vencimiento, tarea.estado, tarea.empresa, tarea.porcentaje)
-        return arbol
-
+            else:
+                print("Opción no válida. Intente de nuevo.")
