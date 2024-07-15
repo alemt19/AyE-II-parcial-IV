@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre": "Proyecto 1",
-        "descripcion": "Descripci\u00c3\u00b3n del proyecto 1",
+        "descripcion": "Descripción del proyecto 1",
         "fecha_inicio": "2024-07-01",
         "fecha_fin": "2024-07-31",
         "estado": "En progreso",
@@ -23,30 +23,65 @@
                     {
                         "id": 2,
                         "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
+                        "descripcion": "Descripción de la subtarea 2",
                         "estado": "Pendiente"
                     },
                     {
                         "id": 3,
                         "nombre": "Subtarea 3",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
+                        "descripcion": "Descripción de la subtarea 3",
                         "estado": "Pendiente"
                     },
                     {
                         "id": 1,
                         "nombre": "Subtarea 1",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
+                        "descripcion": "Descripción de la subtarea 1",
                         "estado": "Pendiente"
                     }
                 ]
             }
         ],
-        "sprints": []
+        "sprints": [
+            {
+                "id": 1,
+                "nombre": "Sprint 1 - Inicial",
+                "fecha_inicio": "2024-07-01",
+                "fecha_fin": "2024-07-15",
+                "estado": "Completado",
+                "objetivos": "Completar la planificación inicial y las tareas de configuración",
+                "equipo": "Equipo A",
+                "tareas": [
+                    {
+                        "id": 1,
+                        "nombre": "Tarea 1 - Planificación",
+                        "descripcion": "Definir los requisitos y planificar el proyecto",
+                        "estado": "Completado"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nombre": "Sprint 2 - Desarrollo",
+                "fecha_inicio": "2024-07-16",
+                "fecha_fin": "2024-07-31",
+                "estado": "En progreso",
+                "objetivos": "Desarrollar las funcionalidades básicas del proyecto",
+                "equipo": "Equipo A",
+                "tareas": [
+                    {
+                        "id": 1,
+                        "nombre": "Tarea 1 - Desarrollo de funcionalidad",
+                        "descripcion": "Implementar las características principales del proyecto",
+                        "estado": "En progreso"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 2,
         "nombre": "Proyecto 2",
-        "descripcion": "Descripci\u00c3\u00b3n del proyecto 2",
+        "descripcion": "Descripción del proyecto 2",
         "fecha_inicio": "2024-08-01",
         "fecha_fin": "2024-08-31",
         "estado": "Planeado",
@@ -57,7 +92,7 @@
             {
                 "id": 2,
                 "nombre": "Tarea 2",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 2",
+                "descripcion": "Descripción de la tarea 2",
                 "fecha_inicio": "2024-08-01",
                 "fecha_fin": "2024-08-31",
                 "estado": "Planeado",
@@ -67,18 +102,53 @@
                     {
                         "id": 4,
                         "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
+                        "descripcion": "Descripción de la subtarea 2",
                         "estado": "Pendiente"
                     }
                 ]
             }
         ],
-        "sprints": []
+        "sprints": [
+            {
+                "id": 1,
+                "nombre": "Sprint 1 - Preparación",
+                "fecha_inicio": "2024-08-01",
+                "fecha_fin": "2024-08-15",
+                "estado": "Planeado",
+                "objetivos": "Preparar el entorno y definir los requisitos",
+                "equipo": "Equipo B",
+                "tareas": [
+                    {
+                        "id": 2,
+                        "nombre": "Tarea 2 - Preparación",
+                        "descripcion": "Establecer el entorno y realizar reuniones de inicio",
+                        "estado": "Planeado"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nombre": "Sprint 2 - Implementación",
+                "fecha_inicio": "2024-08-16",
+                "fecha_fin": "2024-08-31",
+                "estado": "Planeado",
+                "objetivos": "Implementar las funcionalidades iniciales",
+                "equipo": "Equipo B",
+                "tareas": [
+                    {
+                        "id": 2,
+                        "nombre": "Tarea 2 - Implementación",
+                        "descripcion": "Desarrollar y probar las funcionalidades básicas",
+                        "estado": "Planeado"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 3,
         "nombre": "Proyecto 3",
-        "descripcion": "Descripci\u00c3\u00b3n del proyecto 3",
+        "descripcion": "Descripción del proyecto 3",
         "fecha_inicio": "2024-09-01",
         "fecha_fin": "2024-09-30",
         "estado": "Completado",
@@ -89,7 +159,7 @@
             {
                 "id": 3,
                 "nombre": "Tarea 3",
-                "descripcion": "Descripci\u00c3\u00b3n de la tarea 3",
+                "descripcion": "Descripción de la tarea 3",
                 "fecha_inicio": "2024-09-01",
                 "fecha_fin": "2024-09-30",
                 "estado": "Completado",
@@ -99,12 +169,47 @@
                     {
                         "id": 5,
                         "nombre": "Subtarea 3",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
+                        "descripcion": "Descripción de la subtarea 3",
                         "estado": "Completado"
                     }
                 ]
             }
         ],
-        "sprints": []
+        "sprints": [
+            {
+                "id": 1,
+                "nombre": "Sprint 1 - Implementación",
+                "fecha_inicio": "2024-09-01",
+                "fecha_fin": "2024-09-15",
+                "estado": "Completado",
+                "objetivos": "Implementar las características principales del proyecto",
+                "equipo": "Equipo C",
+                "tareas": [
+                    {
+                        "id": 3,
+                        "nombre": "Tarea 3 - Implementación",
+                        "descripcion": "Desarrollar y probar las características principales",
+                        "estado": "Completado"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "nombre": "Sprint 2 - Revisión",
+                "fecha_inicio": "2024-09-16",
+                "fecha_fin": "2024-09-30",
+                "estado": "Completado",
+                "objetivos": "Revisar y finalizar el proyecto",
+                "equipo": "Equipo C",
+                "tareas": [
+                    {
+                        "id": 3,
+                        "nombre": "Tarea 3 - Revisión final",
+                        "descripcion": "Realizar la revisión final y ajustar según feedback",
+                        "estado": "Completado"
+                    }
+                ]
+            }
+        ]
     }
 ]
