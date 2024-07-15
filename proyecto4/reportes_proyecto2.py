@@ -39,6 +39,7 @@ class NaryTree:
             return 1
         else:
             return 1 + max(self.find_depth(child) for child in node.children)
+
     def find_parent(self, current_node, target_node):
         if not current_node:
             return None
@@ -49,7 +50,7 @@ class NaryTree:
             if parent:
                 return parent
         return None
-    
+
     def modify_node_by_attribute(self, attribute, value, new_data):
         node_to_modify = self.find_node_by_attribute(attribute, value)
         if node_to_modify:
@@ -77,10 +78,10 @@ class NaryTree:
             return []
         if level == 0:
             return [self.root.data]
-        
+
         current_level = 0
         queue = [self.root]
-        
+
         while queue:
             next_queue = []
             current_level += 1
@@ -89,17 +90,18 @@ class NaryTree:
             if current_level == level:
                 return [child.data for child in next_queue]
             queue = next_queue
-        
+
         return []
+
     def display_tree(self, node, level=0):
         if node:
             print(' ' * level * 2 + str(node.data))
             for child in node.children:
                 self.display_tree(child, level + 1)
-    
+
     def find_node(self, data):
         return self._find_node_recursive(self.root, data)
-    
+
     def _find_node_recursive(self, node, data):
         if node is None:
             return None
@@ -110,10 +112,10 @@ class NaryTree:
             if result:
                 return result
         return None
-    
+
     def find_node_by_attribute(self, attribute, value):
         return self._find_node_by_attribute_recursive(self.root, attribute, value)
-    
+
     def _find_node_by_attribute_recursive(self, node, attribute, value):
         if node is None:
             return None
@@ -124,7 +126,7 @@ class NaryTree:
             if result:
                 return result
         return None
-    
+
     def delete_node_by_attribute(self, attribute, value):
         node_to_delete = self.find_node_by_attribute(attribute, value)
         if node_to_delete:
@@ -136,7 +138,7 @@ class NaryTree:
                     parent_node.remove_child(node_to_delete)
                     return True
         return False
-    
+
     def inorder_traversal(self, node):
         result = []
         self._inorder_traversal_recursive(node, result)
@@ -147,30 +149,109 @@ class NaryTree:
             for child in node.children:
                 self._inorder_traversal_recursive(child, result)
             result.append(node.data)
-    
-def reportess(arbolProyecto):
-    print("1. recorrer en postorden tareas de un proyecto")
-    print("2. listar sprites de un proyecto")
-    x = int(input("Ingrese una opcion: "))
 
-    if x == 1:   
-        p= str(input("ingrese el nombre del proyecto: "))  
-        proyecto=arbolProyecto.buscar_proyecto('nombre',p)
-        nodos=proyecto.sprint.mostrar_tareas()
+def reportess(tree):
+    print("\n1. Recorrer en postorden tareas de un proyecto")
+    print("2. Listar sprints de un proyecto")
+    option = int(input("Ingrese una opción: "))
 
-    elif x == 2:
-        p= str(input("ingrese el nombre del proyecto: "))  
-        proyecto=arbolProyecto.buscar_proyecto('nombre',p)
-        if proyecto is None:
-            print("no se encontro el proyecto")
+    if option == 1:
+        project_name = input("Ingrese el nombre del proyecto: ")
+        project = tree.find_node_by_attribute('nombre', project_name)
+        if project:
+            tree.postorder_traversal(project)
+            print()
         else:
-            a=int(input("ingrese la altura desde donde desea mostrar los sprites: "))
-            nodos=proyecto.sprint.get_nodes_at_height(a)
-            for i in nodos:
-                i.mostrar_tareas()
-                
-    else:
-        print("No se han encontrado tareas que cumplan con las condiciones dadas.")
+            print("No se encontró el proyecto.")
 
-            
-    
+    elif option == 2:
+        project_name = input("Ingrese el nombre del proyecto: ")
+        project = tree.find_node_by_attribute('nombre', project_name)
+        if project:
+            level = int(input("Ingrese la altura desde donde desea mostrar los sprints: "))
+            nodes = tree.get_elements_at_level(level)
+            for node in nodes:
+                print(node)
+        else:
+            print("No se encontró el proyecto.")
+
+    else:
+        print("Opción no válida.")
+
+def main_menu():
+    tree = NaryTree("Proyecto Raíz")  # Crear árbol de ejemplo
+    root_node = tree.root
+
+    while True:
+        print("\n--- Menú de Gestión de Proyecto ---")
+        print("1. Agregar un nodo al árbol")
+        print("2. Modificar un nodo")
+        print("3. Eliminar un nodo")
+        print("4. Mostrar el árbol")
+        print("5. Buscar un nodo por atributo")
+        print("6. Reportes")
+        print("7. Salir")
+
+        option = int(input("Seleccione una opción: "))
+
+        if option == 1:
+            parent_data = input("Ingrese el dato del nodo padre: ")
+            parent_node = tree.find_node(parent_data)
+            if parent_node:
+                child_data = input("Ingrese el dato del nuevo nodo: ")
+                tree.add_child_to_node(parent_node, child_data)
+                print("Nodo agregado exitosamente.")
+            else:
+                print("Nodo padre no encontrado.")
+
+        elif option == 2:
+            attribute = input("Ingrese el atributo del nodo a modificar (por ejemplo, 'nombre'): ")
+            value = input("Ingrese el valor del atributo del nodo a modificar: ")
+            new_data = input("Ingrese los nuevos datos del nodo (formato: id,nombre,descripcion,fecha_inicio,fecha_vencimiento,estado,empresa,porcentaje): ").split(',')
+            new_node_data = {
+                'id': int(new_data[0]),
+                'nombre': new_data[1],
+                'descripcion': new_data[2],
+                'fecha_inicio': new_data[3],
+                'fecha_vencimiento': new_data[4],
+                'estado': new_data[5],
+                'empresa': new_data[6],
+                'porcentaje': float(new_data[7])
+            }
+            success = tree.modify_node_by_attribute(attribute, value, new_node_data)
+            if success:
+                print("Nodo modificado exitosamente.")
+            else:
+                print("No se encontró el nodo o no se pudo modificar.")
+
+        elif option == 3:
+            attribute = input("Ingrese el atributo del nodo a eliminar (por ejemplo, 'nombre'): ")
+            value = input("Ingrese el valor del atributo del nodo a eliminar: ")
+            success = tree.delete_node_by_attribute(attribute, value)
+            if success:
+                print("Nodo eliminado exitosamente.")
+            else:
+                print("No se encontró el nodo o no se pudo eliminar.")
+
+        elif option == 4:
+            print("Árbol:")
+            tree.display_tree(tree.root)
+
+        elif option == 5:
+            attribute = input("Ingrese el atributo del nodo a buscar (por ejemplo, 'nombre'): ")
+            value = input("Ingrese el valor del atributo del nodo a buscar: ")
+            node = tree.find_node_by_attribute(attribute, value)
+            if node:
+                print("Nodo encontrado:", node.data)
+            else:
+                print("No se encontró el nodo.")
+
+        elif option == 6:
+            reportess(tree)
+
+        elif option == 7:
+            print("Saliendo del menú.")
+            break
+
+        else:
+            print("Opción no válida. Intente de nuevo.")
