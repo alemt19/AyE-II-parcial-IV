@@ -174,7 +174,7 @@ def cargar_datos_desde_csv(proyectosJSON):
                 empresas.agregar(empresa)
     return empresas
 
-def guardar_datos_en_json(proyectos, sprints):
+def guardar_datos_en_json(proyectos):
     data = []
     for p in proyectos:
         if p.__class__.__name__ == "AVLNode":
@@ -194,7 +194,7 @@ def guardar_datos_en_json(proyectos, sprints):
             "tareas": [],  # Suponiendo que hay una estructura para guardar tareas en Proyecto
             "sprints": []
         }
-        if proyecto.sprints.root.data.__class__.__name__ != "NoneType":
+        if proyecto.sprints.root.__class__.__name__ != "NoneType":
             sprintsLista = proyecto.sprints.inorder_traversal()
             for sprint in sprintsLista:
                 sprint_data = {

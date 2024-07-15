@@ -1,3 +1,4 @@
+from datetime import datetime
 from gestion_proyecto_arbolAVL import AVLTree
 from listaEnlazada import LinkedList
 
@@ -26,14 +27,13 @@ class Tarea:
             current = current.next
 
 class Sprint:
-    id_counter = 1
+    id_counter = 0
     def __init__(self, nombre, fecha_inicio, fecha_fin, estado, objetivos, equipo):
         Sprint.id_counter += 1
         self.id = Sprint.id_counter
-        self.id = None  # El id se asignará al insertar en el árbol AVL
         self.nombre = nombre
-        self.fecha_inicio = fecha_inicio
-        self.fecha_fin = fecha_fin
+        self.fecha_inicio = datetime.strptime(fecha_inicio, '%Y-%m-%d')
+        self.fecha_fin = datetime.strptime(fecha_fin, '%Y-%m-%d')
         self.estado = estado
         self.objetivos = objetivos
         self.equipo = equipo
@@ -161,7 +161,8 @@ def manejar_menu(sprints, tareas):
             objetivos = input("Objetivos: ")
             equipo = input("Equipo: ")
             sprint = Sprint(nombre_sprint, fecha_inicio, fecha_fin, estado, objetivos, equipo)
-            sprints.insertar(sprint)
+            sprints.insert(sprint)
+            print(sprints.root.key)
         elif opcion == '2':
             nombre_sprint = input("Nombre del sprint al que se desea agregar una tarea: ")
             sprint = sprints.buscar_sprint(sprints.root, 'nombre', nombre_sprint).key
