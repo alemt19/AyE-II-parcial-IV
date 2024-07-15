@@ -22,36 +22,26 @@
                 "subtareas": [
                     {
                         "id": 2,
+                        "nombre": "Subtarea 2",
+                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
+                        "estado": "Pendiente"
+                    },
+                    {
+                        "id": 3,
                         "nombre": "Subtarea 3",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 3",
                         "estado": "Pendiente"
                     },
                     {
-                        "id": 3,
+                        "id": 1,
                         "nombre": "Subtarea 1",
                         "descripcion": "Descripci\u00c3\u00b3n de la subtarea 1",
-                        "estado": "Pendiente"
-                    },
-                    {
-                        "id": 1,
-                        "nombre": "Subtarea 2",
-                        "descripcion": "Descripci\u00c3\u00b3n de la subtarea 2",
                         "estado": "Pendiente"
                     }
                 ]
             }
         ],
-        "sprints": [
-            {
-                "id": 2,
-                "nombre": "1",
-                "fecha_inicio": "1111-11-11",
-                "fecha_fin": "1111-11-11",
-                "estado": "1",
-                "objetivos": "1",
-                "equipo": "1"
-            }
-        ]
+        "sprints": []
     },
     {
         "id": 2,
